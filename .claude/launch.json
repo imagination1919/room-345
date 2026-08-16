@@ -1,0 +1,32 @@
+{
+  "version": "0.0.1",
+  "configurations": [
+    {
+      "name": "start",
+      "runtimeExecutable": "npm",
+      "runtimeArgs": [
+        "run",
+        "start"
+      ],
+      "port": 9000
+    },
+    {
+      "name": "backend-dev",
+      "runtimeExecutable": "npm",
+      "runtimeArgs": [
+        "run",
+        "backend:dev"
+      ],
+      "port": 9000
+    },
+    {
+      "name": "storefront-dev",
+      "runtimeExecutable": "bash",
+      "runtimeArgs": [
+        "-c",
+        "cd storefront && node_modules/.bin/next dev --turbopack -p 8000"
+      ],
+      "port": 8000
+    }
+  ]
+}

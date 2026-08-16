@@ -1,0 +1,180 @@
+@import "tailwindcss/base";
+@import "tailwindcss/components";
+@import "tailwindcss/utilities";
+
+@layer utilities {
+  /* Chrome, Safari and Opera */
+  .no-scrollbar::-webkit-scrollbar {
+    display: none;
+  }
+
+  .no-scrollbar::-webkit-scrollbar-track {
+    background-color: transparent;
+  }
+
+  .no-scrollbar {
+    -ms-overflow-style: none; /* IE and Edge */
+    scrollbar-width: none; /* Firefox */
+  }
+
+  input:focus ~ label,
+  input:not(:placeholder-shown) ~ label {
+    @apply -translate-y-2 text-xsmall-regular;
+  }
+
+  input:focus ~ label {
+    @apply left-0;
+  }
+
+  input:-webkit-autofill,
+  input:-webkit-autofill:hover,
+  input:-webkit-autofill:focus,
+  textarea:-webkit-autofill,
+  textarea:-webkit-autofill:hover,
+  textarea:-webkit-autofill:focus,
+  select:-webkit-autofill,
+  select:-webkit-autofill:hover,
+  select:-webkit-autofill:focus {
+    border: 1px solid #8a5e2b;
+    -webkit-text-fill-color: #f2e8d6;
+    -webkit-box-shadow: 0 0 0px 1000px #2a1e12 inset;
+    transition: background-color 5000s ease-in-out 0s;
+  }
+
+  input[type="search"]::-webkit-search-decoration,
+  input[type="search"]::-webkit-search-cancel-button,
+  input[type="search"]::-webkit-search-results-button,
+  input[type="search"]::-webkit-search-results-decoration {
+    -webkit-appearance: none;
+  }
+}
+
+@layer components {
+  .content-container {
+    @apply max-w-[1440px] w-full mx-auto px-6;
+  }
+
+  .contrast-btn {
+    @apply px-4 py-2 border border-ui-border-strong rounded-full hover:bg-gold hover:text-charcoal hover:border-gold transition-colors duration-200 ease-in;
+  }
+
+  .text-xsmall-regular {
+    @apply text-[10px] leading-4 font-normal;
+  }
+
+  .text-small-regular {
+    @apply text-xs leading-5 font-normal;
+  }
+
+  .text-small-semi {
+    @apply text-xs leading-5 font-semibold;
+  }
+
+  .text-base-regular {
+    @apply text-sm leading-6 font-normal;
+  }
+
+  .text-base-semi {
+    @apply text-sm leading-6 font-semibold;
+  }
+
+  .text-large-regular {
+    @apply text-base leading-6 font-normal;
+  }
+
+  .text-large-semi {
+    @apply text-base leading-6 font-semibold;
+  }
+
+  .text-xl-regular {
+    @apply text-2xl leading-[36px] font-normal;
+  }
+
+  .text-xl-semi {
+    @apply text-2xl leading-[36px] font-semibold;
+  }
+
+  .text-2xl-regular {
+    @apply text-[30px] leading-[48px] font-normal;
+  }
+
+  .text-2xl-semi {
+    @apply text-[30px] leading-[48px] font-semibold;
+  }
+
+  .text-3xl-regular {
+    @apply text-[32px] leading-[44px] font-normal;
+  }
+
+  .text-3xl-semi {
+    @apply text-[32px] leading-[44px] font-semibold;
+  }
+}
+
+/*
+ * Luxury gold/charcoal brand palette.
+ * Overrides the @medusajs/ui-preset design tokens (see
+ * node_modules/@medusajs/ui-preset/src/theme/tokens/colors.ts) so every
+ * @medusajs/ui component and `ui-*` Tailwind class picks up the brand
+ * palette automatically. Only the light-theme (`:root`) variables are
+ * touched — the storefront never toggles `.dark` or reads
+ * prefers-color-scheme, so that variant is dead code.
+ */
+@layer base {
+  :root {
+    /* Backgrounds */
+    --bg-base: #0d0d0d;
+    --bg-base-hover: #1c1712;
+    --bg-base-pressed: #241c15;
+    --bg-subtle: #2a1e12;
+    --bg-subtle-hover: #33261a;
+    --bg-subtle-pressed: #241c15;
+    --bg-component: #2a1e12;
+    --bg-component-hover: #33261a;
+    --bg-component-pressed: #3d2e1f;
+    --bg-field: #2a1e12;
+    --bg-field-hover: #33261a;
+    --bg-field-component: #2a1e12;
+    --bg-field-component-hover: #33261a;
+    --bg-disabled: #1c1712;
+    --bg-overlay: rgba(13, 13, 13, 0.75);
+    --bg-interactive: #c89b4a;
+    --bg-highlight: rgba(200, 155, 74, 0.12);
+    --bg-highlight-hover: rgba(200, 155, 74, 0.2);
+    --bg-switch-off: #3d2e1f;
+    --bg-switch-off-hover: #4a3826;
+
+    /* Borders */
+    --border-base: rgba(138, 94, 43, 0.35);
+    --border-strong: rgba(138, 94, 43, 0.55);
+    --border-interactive: #c89b4a;
+    --border-menu-top: rgba(138, 94, 43, 0.2);
+    --border-menu-bot: rgba(138, 94, 43, 0.2);
+
+    /* Text */
+    --fg-base: #f2e8d6;
+    --fg-subtle: #cbb89b;
+    --fg-muted: #8a5e2b;
+    --fg-disabled: #5c4a38;
+    --fg-interactive: #c89b4a;
+    --fg-interactive-hover: #faf8f3;
+    --fg-on-inverted: #faf8f3;
+
+    /* Buttons: primary (inverted) = gold fill, secondary (neutral) = espresso fill */
+    --button-inverted: #c89b4a;
+    --button-inverted-hover: #b38a3d;
+    --button-inverted-pressed: #9c7735;
+    --contrast-fg-primary: #0d0d0d;
+    --contrast-fg-secondary: rgba(13, 13, 13, 0.6);
+    --button-neutral: #2a1e12;
+    --button-neutral-hover: #33261a;
+    --button-neutral-pressed: #241c15;
+    --button-transparent-hover: rgba(200, 155, 74, 0.08);
+    --button-transparent-pressed: rgba(200, 155, 74, 0.16);
+
+    /* Contrast surfaces (tooltips, dark chips — already dark by design) */
+    --contrast-bg-base: #0d0d0d;
+    --contrast-bg-base-hover: #1c1712;
+    --contrast-bg-base-pressed: #241c15;
+  }
+}
