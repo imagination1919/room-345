@@ -83,7 +83,7 @@ pnpm install
 cp apps/backend/.env.template apps/backend/.env
 ```
 
-3. Set the database URL in `apps/backend.env`:
+3. Set the database URL in `apps/backend/.env`:
 
 ```bash
 # Replace with actual database URL, make sure the database exists.
@@ -134,7 +134,7 @@ pnpm dev
 
 The storefront runs on `http://localhost:8000`.
 
-You can slo run the following command from the root to start both backend and storefront:
+You can also run the following command from the root to start both backend and storefront:
 
 ```bash
 pnpm dev
