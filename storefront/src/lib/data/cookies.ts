@@ -87,3 +87,8 @@ export const removeCartId = async () => {
     maxAge: -1,
   })
 }
+
+export const getAffiliateRef = async () => {
+  const cookies = await nextCookies()
+  return cookies.get("affiliate_ref")?.value
+}

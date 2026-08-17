@@ -101,6 +101,27 @@ async function getCountryCode(
 }
 
 /**
+ * Carries a `?ref=` referral code into a 30-day `affiliate_ref` cookie so
+ * `lib/data/cart.ts` can attach it to a cart's metadata at creation time.
+ * Query params survive every redirect in this middleware (region resolution
+ * and cache-id assignment both preserve the original href/search string),
+ * so capturing it here at each response-building point is enough to make
+ * sure it isn't lost before the request settles.
+ */
+function captureAffiliateRef(request: NextRequest, response: NextResponse) {
+  const refCode = request.nextUrl.searchParams.get("ref")
+
+  if (refCode) {
+    response.cookies.set("affiliate_ref", refCode, {
+      maxAge: 60 * 60 * 24 * 30,
+      sameSite: "lax",
+    })
+  }
+
+  return response
+}
+
+/**
  * Room 345 sells adult apparel/novelty items — these path segments show
  * product content (prices, descriptions) and require confirming 18+
  * first. The bare landing page is deliberately left out so the site's
@@ -152,10 +173,10 @@ export async function middleware(request: NextRequest) {
   if (urlHasCountryCode && cacheIdCookie) {
     const ageGateResponse = enforceAgeGate(request, countryCode)
     if (ageGateResponse) {
-      return ageGateResponse
+      return captureAffiliateRef(request, ageGateResponse)
     }
 
-    return NextResponse.next()
+    return captureAffiliateRef(request, NextResponse.next())
   }
 
   // if one of the country codes is in the url and the cache id is not set, set the cache id and redirect
@@ -189,7 +210,7 @@ export async function middleware(request: NextRequest) {
     )
   }
 
-  return response
+  return captureAffiliateRef(request, response)
 }
 
 export const config = {

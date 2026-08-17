@@ -6,6 +6,7 @@ import { HttpTypes } from "@medusajs/types"
 import { revalidateTag } from "next/cache"
 import { redirect } from "next/navigation"
 import {
+  getAffiliateRef,
   getAuthHeaders,
   getCacheOptions,
   getCacheTag,
@@ -67,8 +68,13 @@ export async function getOrSetCart(countryCode: string) {
 
   if (!cart) {
     const locale = await getLocale()
+    const affiliateRef = await getAffiliateRef()
     const cartResp = await sdk.store.cart.create(
-      { region_id: region.id, locale: locale || undefined },
+      {
+        region_id: region.id,
+        locale: locale || undefined,
+        ...(affiliateRef ? { metadata: { affiliate_ref: affiliateRef } } : {}),
+      },
       {},
       headers
     )

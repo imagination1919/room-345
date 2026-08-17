@@ -1,7 +1,7 @@
 "use client"
 
 import { clx } from "@medusajs/ui"
-import { ArrowRightOnRectangle, Heart } from "@medusajs/icons"
+import { ArrowRightOnRectangle, Gift, Heart } from "@medusajs/icons"
 import { useParams, usePathname } from "next/navigation"
 
 import ChevronDown from "@modules/common/icons/chevron-down"
@@ -102,6 +102,19 @@ const AccountNav = ({
                   </LocalizedClientLink>
                 </li>
                 <li>
+                  <LocalizedClientLink
+                    href="/account/affiliate"
+                    className="flex items-center justify-between py-4 border-b border-ui-border-base px-8"
+                    data-testid="affiliate-link"
+                  >
+                    <div className="flex items-center gap-x-2">
+                      <Gift />
+                      <span>Affiliate</span>
+                    </div>
+                    <ChevronDown className="transform -rotate-90" />
+                  </LocalizedClientLink>
+                </li>
+                <li>
                   <button
                     type="button"
                     className="flex items-center justify-between py-4 border-b border-ui-border-base px-8 w-full"
@@ -170,6 +183,15 @@ const AccountNav = ({
                   data-testid="wishlists-link"
                 >
                   Wishlists
+                </AccountNavLink>
+              </li>
+              <li>
+                <AccountNavLink
+                  href="/account/affiliate"
+                  route={route!}
+                  data-testid="affiliate-link"
+                >
+                  Affiliate
                 </AccountNavLink>
               </li>
               <li className="text-grey-700">

@@ -29,5 +29,15 @@ export default defineMiddlewares({
     },
     // /store/wishlists/shared/:token is deliberately left unauthenticated —
     // it is the public, read-only share link.
+    {
+      method: "ALL",
+      matcher: "/store/affiliates/apply",
+      middlewares: [authenticate("customer", ["session", "bearer"])],
+    },
+    {
+      method: "ALL",
+      matcher: "/store/affiliates/me",
+      middlewares: [authenticate("customer", ["session", "bearer"])],
+    },
   ],
 })
