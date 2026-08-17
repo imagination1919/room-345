@@ -14,12 +14,14 @@ export const listCartShippingMethods = async (cartId: string) => {
   }
 
   return sdk.client
-    .fetch<HttpTypes.StoreShippingOptionListResponse>(
+    .fetch<{ shipping_options: HttpTypes.StoreCartShippingOptionWithServiceZone[] }>(
       `/store/shipping-options`,
       {
         method: "GET",
         query: {
           cart_id: cartId,
+          fields:
+            "+service_zone.fulfillment_set.type,+service_zone.fulfillment_set.location.address.*",
         },
         headers,
         next,

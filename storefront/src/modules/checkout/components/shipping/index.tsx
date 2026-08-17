@@ -18,10 +18,20 @@ const PICKUP_OPTION_OFF = "__PICKUP_OFF"
 
 type ShippingProps = {
   cart: HttpTypes.StoreCart
-  availableShippingMethods: HttpTypes.StoreCartShippingOption[] | null
+  availableShippingMethods:
+    | HttpTypes.StoreCartShippingOptionWithServiceZone[]
+    | null
 }
 
-function formatAddress(address: HttpTypes.StoreCartAddress) {
+type FormattableAddress = {
+  address_1?: string | null
+  address_2?: string | null
+  city?: string | null
+  postal_code?: string | null
+  country_code?: string | null
+}
+
+function formatAddress(address?: FormattableAddress | null) {
   if (!address) {
     return ""
   }
