@@ -101,6 +101,35 @@ async function getCountryCode(
 }
 
 /**
+ * Room 345 sells adult apparel/novelty items — these path segments show
+ * product content (prices, descriptions) and require confirming 18+
+ * first. The bare landing page is deliberately left out so the site's
+ * 18+ notice is reachable without hitting the gate.
+ */
+const AGE_GATED_SEGMENTS = ["/products/", "/store", "/categories/", "/collections/"]
+
+function enforceAgeGate(
+  request: NextRequest,
+  countryCode: string | undefined
+): NextResponse | null {
+  const isGated = AGE_GATED_SEGMENTS.some((segment) =>
+    request.nextUrl.pathname.includes(segment)
+  )
+
+  if (!isGated || request.cookies.get("age_verified") || !countryCode) {
+    return null
+  }
+
+  const verifyUrl = new URL(`/${countryCode}/age-verify`, request.nextUrl.origin)
+  verifyUrl.searchParams.set(
+    "redirect",
+    request.nextUrl.pathname + request.nextUrl.search
+  )
+
+  return NextResponse.redirect(verifyUrl, 307)
+}
+
+/**
  * Middleware to handle region selection and onboarding status.
  */
 export async function middleware(request: NextRequest) {
@@ -121,6 +150,11 @@ export async function middleware(request: NextRequest) {
 
   // if one of the country codes is in the url and the cache id is set, return next
   if (urlHasCountryCode && cacheIdCookie) {
+    const ageGateResponse = enforceAgeGate(request, countryCode)
+    if (ageGateResponse) {
+      return ageGateResponse
+    }
+
     return NextResponse.next()
   }
 

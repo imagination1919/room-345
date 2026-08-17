@@ -1,5 +1,5 @@
 import { Github } from "@medusajs/icons"
-import { Button, Heading } from "@medusajs/ui"
+import { Button, Heading, Text } from "@medusajs/ui"
 
 const Hero = () => {
   return (
@@ -19,6 +19,15 @@ const Hero = () => {
             Powered by Medusa and Next.js
           </Heading>
         </span>
+        <div className="border border-ui-border-interactive rounded-rounded px-4 py-2 max-w-md">
+          <Text className="text-ui-fg-interactive txt-small-plus uppercase">
+            18+ only
+          </Text>
+          <Text className="text-ui-fg-subtle txt-small">
+            Room 345 features adult-oriented apparel and novelty items and
+            is intended for visitors 18 years of age or older.
+          </Text>
+        </div>
         <a
           href="https://github.com/medusajs/nextjs-starter-medusa"
           target="_blank"
