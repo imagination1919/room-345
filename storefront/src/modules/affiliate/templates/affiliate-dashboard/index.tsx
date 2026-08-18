@@ -73,7 +73,7 @@ const AffiliateDashboard = ({ data }: Props) => {
         <CopyReferralLink referralLink={referral_link} />
       </div>
 
-      <div className="flex items-start gap-x-16 mb-8">
+      <div className="grid grid-cols-3 gap-4 mb-8">
         <div className="flex flex-col gap-y-4">
           <h3 className="text-large-semi">Tier</h3>
           <span className="text-3xl-semi leading-none capitalize">
