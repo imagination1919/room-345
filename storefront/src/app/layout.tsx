@@ -4,6 +4,10 @@ import "styles/globals.css"
 
 export const metadata: Metadata = {
   metadataBase: new URL(getBaseURL()),
+  title: {
+    default: "Room 345",
+    template: "%s | Room 345",
+  },
   // RTA (Restricted to Adults) label — recognized by parental-control
   // software so this adult-oriented storefront can be auto-filtered.
   other: {
