@@ -4,6 +4,7 @@ import {
   StepResponse,
   WorkflowResponse,
 } from "@medusajs/framework/workflows-sdk"
+import { MedusaError } from "@medusajs/framework/utils"
 import { AFFILIATE_MODULE } from "../../modules/affiliate"
 import AffiliateModuleService from "../../modules/affiliate/service"
 
@@ -24,17 +25,23 @@ const applyForAffiliateStep = createStep(
       customer_id: input.customer_id,
     })
     if (existing.length > 0) {
-      throw new Error("An affiliate application already exists for this customer.")
+      throw new MedusaError(
+        MedusaError.Types.DUPLICATE_ERROR,
+        "An affiliate application already exists for this customer."
+      )
     }
 
     if (!input.age_confirmed) {
-      throw new Error("Age/eligibility confirmation is required to apply.")
+      throw new MedusaError(
+        MedusaError.Types.INVALID_DATA,
+        "Age/eligibility confirmation is required to apply."
+      )
     }
 
     // Retry code generation on the rare unique-constraint collision
     let affiliate
     for (let attempt = 0; attempt < 3; attempt++) {
-      const referral_code = affiliateModuleService.generateReferralCode(
+      const referral_code = await affiliateModuleService.generateReferralCode(
         input.display_name
       )
       try {

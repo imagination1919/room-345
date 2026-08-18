@@ -11,7 +11,7 @@ class AffiliateModuleService extends MedusaService({
    * name. Callers should catch the unique constraint violation on
    * createAffiliates and retry with a new code on collision.
    */
-  generateReferralCode(displayName: string): string {
+  async generateReferralCode(displayName: string): Promise<string> {
     const base = displayName
       .toLowerCase()
       .replace(/[^a-z0-9]+/g, "")
