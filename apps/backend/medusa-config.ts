@@ -46,5 +46,27 @@ module.exports = defineConfig({
         ],
       },
     },
+    // Transactional email only (order confirmations, etc.) — the local
+    // provider just logs, so without this nothing actually gets sent.
+    // SENDGRID_API_KEY / SENDGRID_FROM must be set for the provider to
+    // work; the subscriber that uses it (order-placed-email.ts) sends
+    // plain HTML directly rather than a SendGrid Dynamic Template, so no
+    // template needs to be built in the SendGrid dashboard first.
+    {
+      resolve: "@medusajs/medusa/notification",
+      options: {
+        providers: [
+          {
+            resolve: "@medusajs/notification-sendgrid",
+            id: "sendgrid",
+            options: {
+              channels: ["email"],
+              api_key: process.env.SENDGRID_API_KEY,
+              from: process.env.SENDGRID_FROM,
+            },
+          },
+        ],
+      },
+    },
   ],
 })
