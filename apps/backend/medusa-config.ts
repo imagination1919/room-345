@@ -68,5 +68,31 @@ module.exports = defineConfig({
         ],
       },
     },
+    // Stripe checkout. id: "stripe" + this resolve produces the
+    // "pp_stripe_stripe" provider id the storefront's payment-wrapper
+    // already expects (see storefront/src/lib/constants.tsx). The
+    // provider throws at boot if STRIPE_API_KEY is missing — unlike the
+    // notification providers above, there's no safe default here.
+    // STRIPE_WEBHOOK_SECRET is technically optional (only warns if
+    // unset), but without it Stripe can't confirm payment status back to
+    // Medusa, so anything beyond a plain synchronous card charge (3DS,
+    // redirect-based methods, delayed capture) will leave orders stuck
+    // pending even after a successful charge.
+    {
+      resolve: "@medusajs/medusa/payment",
+      options: {
+        providers: [
+          {
+            resolve: "@medusajs/payment-stripe",
+            id: "stripe",
+            options: {
+              apiKey: process.env.STRIPE_API_KEY,
+              webhookSecret: process.env.STRIPE_WEBHOOK_SECRET,
+              capture: true,
+            },
+          },
+        ],
+      },
+    },
   ],
 })
