@@ -4,7 +4,7 @@ import LoginTemplate from "@modules/account/templates/login-template"
 
 export const metadata: Metadata = {
   title: "Sign in",
-  description: "Sign in to your Room 345 account.",
+  description: "Sign in to your Fetch & Co. account.",
 }
 
 export default function Login() {

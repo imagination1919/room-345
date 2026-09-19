@@ -1,0 +1,13 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 800 800" fill="none">
+  <rect width="800" height="800" fill="#F4F8F9"/>
+  <circle cx="400" cy="400" r="250" fill="#EAF3F5"/>
+  <!-- bolster rim -->
+  <ellipse cx="400" cy="470" rx="240" ry="150" fill="#17A2B8"/>
+  <!-- inner cushion -->
+  <ellipse cx="400" cy="470" rx="165" ry="95" fill="#E8D9BF"/>
+  <!-- pillow tuft lines -->
+  <path d="M320 470c25 20 135 20 160 0M330 440c20 12 120 12 140 0" stroke="#C9B48C" stroke-width="8" stroke-linecap="round"/>
+  <!-- sleeping pet curl -->
+  <path d="M355 455c-35-30-20-85 30-90 55-6 92 44 60 88-10 14-26 20-44 18" fill="#FFC942"/>
+  <circle cx="352" cy="452" r="9" fill="#14343B"/>
+</svg>

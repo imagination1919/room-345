@@ -1,0 +1,12 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 800 800" fill="none">
+  <rect width="800" height="800" fill="#F4F8F9"/>
+  <circle cx="400" cy="400" r="250" fill="#EAF3F5"/>
+  <!-- back fold -->
+  <path d="M250 320h300a20 20 0 0 1 20 20v150a20 20 0 0 1-20 20H250a20 20 0 0 1-20-20V340a20 20 0 0 1 20-20z" fill="#0F7C8C"/>
+  <!-- front folded blanket -->
+  <path d="M230 380h320a24 24 0 0 1 24 24v150a24 24 0 0 1-24 24H230a24 24 0 0 1-24-24V404a24 24 0 0 1 24-24z" fill="#17A2B8"/>
+  <!-- stitch lines -->
+  <path d="M206 430h368M206 480h368M206 530h368" stroke="#EAF3F5" stroke-width="6" stroke-dasharray="14 12" stroke-linecap="round"/>
+  <!-- wavy top edge -->
+  <path d="M206 404c30-26 60 26 91 0s60 26 91 0 60 26 91 0 60 26 92 0" stroke="#FFC942" stroke-width="14" fill="none" stroke-linecap="round"/>
+</svg>

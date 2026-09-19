@@ -303,19 +303,19 @@ export default async function initial_data_seed({
     input: {
       product_categories: [
         {
-          name: "Shirts",
+          name: "Collars & Leashes",
           is_active: true,
         },
         {
-          name: "Sweatshirts",
+          name: "Beds",
           is_active: true,
         },
         {
-          name: "Pants",
+          name: "Blankets",
           is_active: true,
         },
         {
-          name: "Merch",
+          name: "Travel & Carriers",
           is_active: true,
         },
       ],
@@ -333,7 +333,7 @@ export default async function initial_data_seed({
         },
         {
           title: "Color",
-          values: ["Black", "White"],
+          values: ["Teal", "Sand"],
         },
       ],
     },
@@ -345,41 +345,28 @@ export default async function initial_data_seed({
     input: {
       products: [
         {
-          title: "Medusa T-Shirt",
+          title: "Everyday Dog Collar",
           category_ids: [
-            categoryResult.find((cat) => cat.name === "Shirts")!.id,
+            categoryResult.find((cat) => cat.name === "Collars & Leashes")!.id,
           ],
           description:
-            "Reimagine the feeling of a classic T-shirt. With our cotton T-shirts, everyday essentials no longer have to be ordinary.",
-          handle: "t-shirt",
-          weight: 400,
+            "A comfy everyday collar in soft webbing with a secure quick-release buckle and a welded D-ring for the tag jingle you love.",
+          handle: "dog-collar",
+          weight: 100,
           status: ProductStatus.PUBLISHED,
           shipping_profile_id: shippingProfile.id,
-          images: [
-            {
-              url: "https://medusa-public-images.s3.eu-west-1.amazonaws.com/tee-black-front.png",
-            },
-            {
-              url: "https://medusa-public-images.s3.eu-west-1.amazonaws.com/tee-black-back.png",
-            },
-            {
-              url: "https://medusa-public-images.s3.eu-west-1.amazonaws.com/tee-white-front.png",
-            },
-            {
-              url: "https://medusa-public-images.s3.eu-west-1.amazonaws.com/tee-white-back.png",
-            },
-          ],
+          images: [{ url: "/products/dog-collar.svg" }],
           options: [
             { id: sizeOption.id },
             { id: colorOption.id },
           ],
           variants: [
             {
-              title: "S / Black",
-              sku: "SHIRT-S-BLACK",
+              title: "S / Teal",
+              sku: "COLLAR-S-BLACK",
               options: {
                 Size: "S",
-                Color: "Black",
+                Color: "Teal",
               },
               prices: [
                 {
@@ -393,11 +380,11 @@ export default async function initial_data_seed({
               ],
             },
             {
-              title: "S / White",
-              sku: "SHIRT-S-WHITE",
+              title: "S / Sand",
+              sku: "COLLAR-S-WHITE",
               options: {
                 Size: "S",
-                Color: "White",
+                Color: "Sand",
               },
               prices: [
                 {
@@ -411,11 +398,11 @@ export default async function initial_data_seed({
               ],
             },
             {
-              title: "M / Black",
-              sku: "SHIRT-M-BLACK",
+              title: "M / Teal",
+              sku: "COLLAR-M-BLACK",
               options: {
                 Size: "M",
-                Color: "Black",
+                Color: "Teal",
               },
               prices: [
                 {
@@ -429,11 +416,11 @@ export default async function initial_data_seed({
               ],
             },
             {
-              title: "M / White",
-              sku: "SHIRT-M-WHITE",
+              title: "M / Sand",
+              sku: "COLLAR-M-WHITE",
               options: {
                 Size: "M",
-                Color: "White",
+                Color: "Sand",
               },
               prices: [
                 {
@@ -447,11 +434,11 @@ export default async function initial_data_seed({
               ],
             },
             {
-              title: "L / Black",
-              sku: "SHIRT-L-BLACK",
+              title: "L / Teal",
+              sku: "COLLAR-L-BLACK",
               options: {
                 Size: "L",
-                Color: "Black",
+                Color: "Teal",
               },
               prices: [
                 {
@@ -465,11 +452,11 @@ export default async function initial_data_seed({
               ],
             },
             {
-              title: "L / White",
-              sku: "SHIRT-L-WHITE",
+              title: "L / Sand",
+              sku: "COLLAR-L-WHITE",
               options: {
                 Size: "L",
-                Color: "White",
+                Color: "Sand",
               },
               prices: [
                 {
@@ -483,11 +470,11 @@ export default async function initial_data_seed({
               ],
             },
             {
-              title: "XL / Black",
-              sku: "SHIRT-XL-BLACK",
+              title: "XL / Teal",
+              sku: "COLLAR-XL-BLACK",
               options: {
                 Size: "XL",
-                Color: "Black",
+                Color: "Teal",
               },
               prices: [
                 {
@@ -501,11 +488,11 @@ export default async function initial_data_seed({
               ],
             },
             {
-              title: "XL / White",
-              sku: "SHIRT-XL-WHITE",
+              title: "XL / Sand",
+              sku: "COLLAR-XL-WHITE",
               options: {
                 Size: "XL",
-                Color: "White",
+                Color: "Sand",
               },
               prices: [
                 {
@@ -526,29 +513,22 @@ export default async function initial_data_seed({
           ],
         },
         {
-          title: "Medusa Sweatshirt",
+          title: "Cozy Pet Bed",
           category_ids: [
-            categoryResult.find((cat) => cat.name === "Sweatshirts")!.id,
+            categoryResult.find((cat) => cat.name === "Beds")!.id,
           ],
           description:
-            "Reimagine the feeling of a classic sweatshirt. With our cotton sweatshirt, everyday essentials no longer have to be ordinary.",
-          handle: "sweatshirt",
-          weight: 400,
+            "A deep, bolstered bed with a machine-washable cover and a base that actually stays put on hardwood. Nap-tested, tail-approved.",
+          handle: "pet-bed",
+          weight: 1200,
           status: ProductStatus.PUBLISHED,
           shipping_profile_id: shippingProfile.id,
-          images: [
-            {
-              url: "https://medusa-public-images.s3.eu-west-1.amazonaws.com/sweatshirt-vintage-front.png",
-            },
-            {
-              url: "https://medusa-public-images.s3.eu-west-1.amazonaws.com/sweatshirt-vintage-back.png",
-            },
-          ],
+          images: [{ url: "/products/pet-bed.svg" }],
           options: [{ id: sizeOption.id }],
           variants: [
             {
               title: "S",
-              sku: "SWEATSHIRT-S",
+              sku: "BED-S",
               options: {
                 Size: "S",
               },
@@ -565,7 +545,7 @@ export default async function initial_data_seed({
             },
             {
               title: "M",
-              sku: "SWEATSHIRT-M",
+              sku: "BED-M",
               options: {
                 Size: "M",
               },
@@ -582,7 +562,7 @@ export default async function initial_data_seed({
             },
             {
               title: "L",
-              sku: "SWEATSHIRT-L",
+              sku: "BED-L",
               options: {
                 Size: "L",
               },
@@ -599,103 +579,7 @@ export default async function initial_data_seed({
             },
             {
               title: "XL",
-              sku: "SWEATSHIRT-XL",
-              options: {
-                Size: "XL",
-              },
-              prices: [
-                {
-                  amount: 10,
-                  currency_code: "eur",
-                },
-                {
-                  amount: 15,
-                  currency_code: "usd",
-                },
-              ],
-            },
-          ],
-          sales_channels: [
-            {
-              id: defaultSalesChannel.id,
-            },
-          ],
-        },
-        {
-          title: "Medusa Sweatpants",
-          category_ids: [
-            categoryResult.find((cat) => cat.name === "Pants")!.id,
-          ],
-          description:
-            "Reimagine the feeling of classic sweatpants. With our cotton sweatpants, everyday essentials no longer have to be ordinary.",
-          handle: "sweatpants",
-          weight: 400,
-          status: ProductStatus.PUBLISHED,
-          shipping_profile_id: shippingProfile.id,
-          images: [
-            {
-              url: "https://medusa-public-images.s3.eu-west-1.amazonaws.com/sweatpants-gray-front.png",
-            },
-            {
-              url: "https://medusa-public-images.s3.eu-west-1.amazonaws.com/sweatpants-gray-back.png",
-            },
-          ],
-          options: [{ id: sizeOption.id }],
-          variants: [
-            {
-              title: "S",
-              sku: "SWEATPANTS-S",
-              options: {
-                Size: "S",
-              },
-              prices: [
-                {
-                  amount: 10,
-                  currency_code: "eur",
-                },
-                {
-                  amount: 15,
-                  currency_code: "usd",
-                },
-              ],
-            },
-            {
-              title: "M",
-              sku: "SWEATPANTS-M",
-              options: {
-                Size: "M",
-              },
-              prices: [
-                {
-                  amount: 10,
-                  currency_code: "eur",
-                },
-                {
-                  amount: 15,
-                  currency_code: "usd",
-                },
-              ],
-            },
-            {
-              title: "L",
-              sku: "SWEATPANTS-L",
-              options: {
-                Size: "L",
-              },
-              prices: [
-                {
-                  amount: 10,
-                  currency_code: "eur",
-                },
-                {
-                  amount: 15,
-                  currency_code: "usd",
-                },
-              ],
-            },
-            {
-              title: "XL",
-              sku: "SWEATPANTS-XL",
+              sku: "BED-XL",
               options: {
                 Size: "XL",
               },
@@ -718,29 +602,22 @@ export default async function initial_data_seed({
           ],
         },
         {
-          title: "Medusa Shorts",
+          title: "Snuggle Pet Blanket",
           category_ids: [
-            categoryResult.find((cat) => cat.name === "Merch")!.id,
+            categoryResult.find((cat) => cat.name === "Blankets")!.id,
           ],
           description:
-            "Reimagine the feeling of classic shorts. With our cotton shorts, everyday essentials no longer have to be ordinary.",
-          handle: "shorts",
-          weight: 400,
+            "A double-layer fleece throw for the couch, the crate or the car. Warm enough to share, sturdy enough for zoomies.",
+          handle: "pet-blanket",
+          weight: 600,
           status: ProductStatus.PUBLISHED,
           shipping_profile_id: shippingProfile.id,
-          images: [
-            {
-              url: "https://medusa-public-images.s3.eu-west-1.amazonaws.com/shorts-vintage-front.png",
-            },
-            {
-              url: "https://medusa-public-images.s3.eu-west-1.amazonaws.com/shorts-vintage-back.png",
-            },
-          ],
+          images: [{ url: "/products/pet-blanket.svg" }],
           options: [{ id: sizeOption.id }],
           variants: [
             {
               title: "S",
-              sku: "SHORTS-S",
+              sku: "BLANKET-S",
               options: {
                 Size: "S",
               },
@@ -757,7 +634,7 @@ export default async function initial_data_seed({
             },
             {
               title: "M",
-              sku: "SHORTS-M",
+              sku: "BLANKET-M",
               options: {
                 Size: "M",
               },
@@ -774,7 +651,7 @@ export default async function initial_data_seed({
             },
             {
               title: "L",
-              sku: "SHORTS-L",
+              sku: "BLANKET-L",
               options: {
                 Size: "L",
               },
@@ -791,7 +668,96 @@ export default async function initial_data_seed({
             },
             {
               title: "XL",
-              sku: "SHORTS-XL",
+              sku: "BLANKET-XL",
+              options: {
+                Size: "XL",
+              },
+              prices: [
+                {
+                  amount: 10,
+                  currency_code: "eur",
+                },
+                {
+                  amount: 15,
+                  currency_code: "usd",
+                },
+              ],
+            },
+          ],
+          sales_channels: [
+            {
+              id: defaultSalesChannel.id,
+            },
+          ],
+        },
+        {
+          title: "Adventure Travel Bag",
+          category_ids: [
+            categoryResult.find((cat) => cat.name === "Travel & Carriers")!.id,
+          ],
+          description:
+            "An airline-friendly carrier with mesh windows, a padded shoulder strap and a fold-flat base for trips big and small.",
+          handle: "travel-bag",
+          weight: 800,
+          status: ProductStatus.PUBLISHED,
+          shipping_profile_id: shippingProfile.id,
+          images: [{ url: "/products/travel-bag.svg" }],
+          options: [{ id: sizeOption.id }],
+          variants: [
+            {
+              title: "S",
+              sku: "BAG-S",
+              options: {
+                Size: "S",
+              },
+              prices: [
+                {
+                  amount: 10,
+                  currency_code: "eur",
+                },
+                {
+                  amount: 15,
+                  currency_code: "usd",
+                },
+              ],
+            },
+            {
+              title: "M",
+              sku: "BAG-M",
+              options: {
+                Size: "M",
+              },
+              prices: [
+                {
+                  amount: 10,
+                  currency_code: "eur",
+                },
+                {
+                  amount: 15,
+                  currency_code: "usd",
+                },
+              ],
+            },
+            {
+              title: "L",
+              sku: "BAG-L",
+              options: {
+                Size: "L",
+              },
+              prices: [
+                {
+                  amount: 10,
+                  currency_code: "eur",
+                },
+                {
+                  amount: 15,
+                  currency_code: "usd",
+                },
+              ],
+            },
+            {
+              title: "XL",
+              sku: "BAG-XL",
               options: {
                 Size: "XL",
               },

@@ -35,9 +35,9 @@
   select:-webkit-autofill,
   select:-webkit-autofill:hover,
   select:-webkit-autofill:focus {
-    border: 1px solid #8a5e2b;
-    -webkit-text-fill-color: #f2e8d6;
-    -webkit-box-shadow: 0 0 0px 1000px #2a1e12 inset;
+    border: 1px solid #17a2b8;
+    -webkit-text-fill-color: #14343b;
+    -webkit-box-shadow: 0 0 0px 1000px #ffffff inset;
     transition: background-color 5000s ease-in-out 0s;
   }
 
@@ -55,7 +55,7 @@
   }
 
   .contrast-btn {
-    @apply px-4 py-2 border border-ui-border-strong rounded-full hover:bg-gold hover:text-charcoal hover:border-gold transition-colors duration-200 ease-in;
+    @apply px-4 py-2 border border-ui-border-strong rounded-full hover:bg-sunny hover:text-ink hover:border-sunny transition-colors duration-200 ease-in;
   }
 
   .text-xsmall-regular {
@@ -112,7 +112,7 @@
 }
 
 /*
- * Luxury gold/charcoal brand palette.
+ * "Fetch & Co." — light pet-shop palette.
  * Overrides the @medusajs/ui-preset design tokens (see
  * node_modules/@medusajs/ui-preset/src/theme/tokens/colors.ts) so every
  * @medusajs/ui component and `ui-*` Tailwind class picks up the brand
@@ -123,58 +123,94 @@
 @layer base {
   :root {
     /* Backgrounds */
-    --bg-base: #0d0d0d;
-    --bg-base-hover: #1c1712;
-    --bg-base-pressed: #241c15;
-    --bg-subtle: #2a1e12;
-    --bg-subtle-hover: #33261a;
-    --bg-subtle-pressed: #241c15;
-    --bg-component: #2a1e12;
-    --bg-component-hover: #33261a;
-    --bg-component-pressed: #3d2e1f;
-    --bg-field: #2a1e12;
-    --bg-field-hover: #33261a;
-    --bg-field-component: #2a1e12;
-    --bg-field-component-hover: #33261a;
-    --bg-disabled: #1c1712;
-    --bg-overlay: rgba(13, 13, 13, 0.75);
-    --bg-interactive: #c89b4a;
-    --bg-highlight: rgba(200, 155, 74, 0.12);
-    --bg-highlight-hover: rgba(200, 155, 74, 0.2);
-    --bg-switch-off: #3d2e1f;
-    --bg-switch-off-hover: #4a3826;
+    --bg-base: #ffffff;
+    --bg-base-hover: #f4f8f9;
+    --bg-base-pressed: #eaf3f5;
+    --bg-subtle: #f4f8f9;
+    --bg-subtle-hover: #eaf3f5;
+    --bg-subtle-pressed: #dfedef;
+    --bg-component: #ffffff;
+    --bg-component-hover: #f4f8f9;
+    --bg-component-pressed: #eaf3f5;
+    --bg-field: #ffffff;
+    --bg-field-hover: #f4f8f9;
+    --bg-field-component: #ffffff;
+    --bg-field-component-hover: #f4f8f9;
+    --bg-disabled: #f4f8f9;
+    --bg-overlay: rgba(20, 52, 59, 0.4);
+    --bg-interactive: #17a2b8;
+    --bg-highlight: rgba(23, 162, 184, 0.1);
+    --bg-highlight-hover: rgba(23, 162, 184, 0.18);
+    --bg-switch-off: #cbd8dc;
+    --bg-switch-off-hover: #b9cacf;
 
     /* Borders */
-    --border-base: rgba(138, 94, 43, 0.35);
-    --border-strong: rgba(138, 94, 43, 0.55);
-    --border-interactive: #c89b4a;
-    --border-menu-top: rgba(138, 94, 43, 0.2);
-    --border-menu-bot: rgba(138, 94, 43, 0.2);
+    --border-base: rgba(20, 52, 59, 0.12);
+    --border-strong: rgba(20, 52, 59, 0.22);
+    --border-interactive: #17a2b8;
+    --border-menu-top: rgba(20, 52, 59, 0.08);
+    --border-menu-bot: rgba(20, 52, 59, 0.12);
 
     /* Text */
-    --fg-base: #f2e8d6;
-    --fg-subtle: #cbb89b;
-    --fg-muted: #8a5e2b;
-    --fg-disabled: #5c4a38;
-    --fg-interactive: #c89b4a;
-    --fg-interactive-hover: #faf8f3;
-    --fg-on-inverted: #faf8f3;
+    --fg-base: #14343b;
+    --fg-subtle: #4a6b72;
+    --fg-muted: #7a969c;
+    --fg-disabled: #a9bec3;
+    --fg-interactive: #17a2b8;
+    --fg-interactive-hover: #0f7c8c;
+    --fg-on-inverted: #ffffff;
+    --fg-on-color: #ffffff;
 
-    /* Buttons: primary (inverted) = gold fill, secondary (neutral) = espresso fill */
-    --button-inverted: #c89b4a;
-    --button-inverted-hover: #b38a3d;
-    --button-inverted-pressed: #9c7735;
-    --contrast-fg-primary: #0d0d0d;
-    --contrast-fg-secondary: rgba(13, 13, 13, 0.6);
-    --button-neutral: #2a1e12;
-    --button-neutral-hover: #33261a;
-    --button-neutral-pressed: #241c15;
-    --button-transparent-hover: rgba(200, 155, 74, 0.08);
-    --button-transparent-pressed: rgba(200, 155, 74, 0.16);
+    /* Buttons: primary (inverted) = sunny yellow fill, label = dark teal */
+    --button-inverted: #ffc942;
+    --button-inverted-hover: #f2bb2e;
+    --button-inverted-pressed: #e4ad1c;
+    --contrast-fg-primary: #14343b;
+    --contrast-fg-secondary: rgba(20, 52, 59, 0.6);
+    --button-neutral: #ffffff;
+    --button-neutral-hover: #f4f8f9;
+    --button-neutral-pressed: #eaf3f5;
+    --button-transparent-hover: rgba(23, 162, 184, 0.08);
+    --button-transparent-pressed: rgba(23, 162, 184, 0.16);
 
-    /* Contrast surfaces (tooltips, dark chips — already dark by design) */
-    --contrast-bg-base: #0d0d0d;
-    --contrast-bg-base-hover: #1c1712;
-    --contrast-bg-base-pressed: #241c15;
+    /* Contrast surfaces (tooltips, chips) — dark teal for legibility */
+    --contrast-bg-base: #14343b;
+    --contrast-bg-base-hover: #1c4149;
+    --contrast-bg-base-pressed: #0f272c;
   }
+}
+
+/*
+ * Font wiring for @medusajs/ui typography.
+ * `.txt-*` / `.h*-core` ship a hard-coded `font-family: Inter` from
+ * @medusajs/ui-preset's addComponents. These plain rules are emitted
+ * after the utilities bucket, so they win by source order.
+ */
+[class*="txt-"] {
+  font-family: var(--font-figtree), -apple-system, BlinkMacSystemFont,
+    "Segoe UI", Roboto, "Helvetica Neue", sans-serif;
+}
+
+h1,
+h2,
+h3,
+h4,
+.h1-core,
+.h2-core,
+.h3-core,
+.h1-webs,
+.h2-webs,
+.h3-webs,
+.h4-webs,
+.h1-docs,
+.h2-docs,
+.h3-docs,
+.h4-docs,
+.text-xl-regular,
+.text-xl-semi,
+.text-2xl-regular,
+.text-2xl-semi,
+.text-3xl-regular,
+.text-3xl-semi {
+  font-family: var(--font-quicksand), ui-sans-serif, system-ui, sans-serif;
 }

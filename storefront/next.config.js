@@ -25,6 +25,14 @@ const nextConfig = {
     ignoreBuildErrors: true,
   },
   images: {
+    // Needed for the in-repo illustrated hero + product SVGs served from
+    // /public. These are our own committed, reviewed files; the CSP below
+    // (script-src 'none'; sandbox) neutralizes script execution in any
+    // optimizer-served SVG.
+    dangerouslyAllowSVG: true,
+    contentDispositionType: "attachment",
+    contentSecurityPolicy:
+      "default-src 'self'; script-src 'none'; sandbox; style-src 'unsafe-inline';",
     remotePatterns: [
       {
         protocol: "http",

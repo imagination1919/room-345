@@ -1,0 +1,13 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 800 800" fill="none">
+  <rect width="800" height="800" fill="#F4F8F9"/>
+  <circle cx="400" cy="400" r="250" fill="#EAF3F5"/>
+  <!-- collar band -->
+  <path d="M400 190c-150 0-235 120-235 235 0 90 55 150 120 150 45 0 70-30 70-65 0-40-30-60-70-60-35 0-55 20-55 45" stroke="#17A2B8" stroke-width="46" stroke-linecap="round" fill="none"/>
+  <path d="M400 190c150 0 235 120 235 235 0 90-55 150-120 150" stroke="#17A2B8" stroke-width="46" stroke-linecap="round" fill="none"/>
+  <!-- buckle -->
+  <rect x="360" y="168" width="80" height="52" rx="10" fill="#14343B"/>
+  <!-- hanging tag -->
+  <circle cx="400" cy="470" r="52" fill="#FFC942" stroke="#14343B" stroke-width="8"/>
+  <circle cx="400" cy="424" r="12" fill="#14343B"/>
+  <path d="M384 470h32M400 454v32" stroke="#14343B" stroke-width="7" stroke-linecap="round"/>
+</svg>

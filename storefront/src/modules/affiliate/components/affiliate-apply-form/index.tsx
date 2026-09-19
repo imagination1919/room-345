@@ -47,7 +47,7 @@ const AffiliateApplyForm = () => {
       data-testid="affiliate-apply-form"
     >
       <Text className="text-ui-fg-subtle">
-        Join the Room 345 affiliate program to earn commission on orders
+        Join the Fetch & Co. affiliate program to earn commission on orders
         referred through your personal link.
       </Text>
       <Input
@@ -67,7 +67,7 @@ const AffiliateApplyForm = () => {
         data-testid="affiliate-notes-input"
       />
       <CheckboxWithLabel
-        label="I am 18 years of age or older and eligible to participate"
+        label="I confirm I'm eligible to join the affiliate program"
         checked={ageConfirmed}
         onChange={() => setAgeConfirmed((prev) => !prev)}
         name="age_confirmed"

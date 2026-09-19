@@ -34,20 +34,19 @@ module.exports = {
           80: "#1F2937",
           90: "#111827",
         },
-        charcoal: "#0D0D0D",
-        espresso: "#2A1E12",
-        bronze: "#8A5E2B",
-        gold: "#C89B4A",
-        cream: "#F2E8D6",
-        taupe: "#CBB89B",
-        ivory: "#FAF8F3",
+        ink: "#14343B", // dark-teal text / on-yellow label
+        aqua: "#17A2B8", // links / interactive accent
+        sunny: "#FFC942", // CTA / primary button
+        cloud: "#EAF3F5", // light surface (deeper)
+        mist: "#F4F8F9", // light surface (subtle)
+        paper: "#FFFFFF", // base background
       },
       borderRadius: {
         none: "0px",
-        soft: "2px",
-        base: "4px",
-        rounded: "8px",
-        large: "16px",
+        soft: "4px",
+        base: "8px",
+        rounded: "12px",
+        large: "20px",
         circle: "9999px",
       },
       maxWidth: {
@@ -67,13 +66,19 @@ module.exports = {
       },
       fontFamily: {
         sans: [
-          "Inter",
+          "var(--font-figtree)",
           "-apple-system",
           "BlinkMacSystemFont",
           "Segoe UI",
           "Roboto",
           "Helvetica Neue",
           "Ubuntu",
+          "sans-serif",
+        ],
+        display: [
+          "var(--font-quicksand)",
+          "ui-sans-serif",
+          "system-ui",
           "sans-serif",
         ],
       },

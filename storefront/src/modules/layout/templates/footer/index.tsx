@@ -18,9 +18,9 @@ export default async function Footer() {
           <div>
             <LocalizedClientLink
               href="/"
-              className="txt-compact-xlarge-plus text-ui-fg-subtle hover:text-ui-fg-base uppercase"
+              className="txt-compact-xlarge-plus font-display text-ui-fg-subtle hover:text-ui-fg-base"
             >
-              Room 345
+              Fetch & Co.
             </LocalizedClientLink>
           </div>
           <div className="text-small-regular gap-10 md:gap-x-16 grid grid-cols-2 sm:grid-cols-3">
@@ -147,7 +147,7 @@ export default async function Footer() {
         </div>
         <div className="flex w-full mb-16 justify-between text-ui-fg-muted">
           <Text className="txt-compact-small">
-            © {new Date().getFullYear()} Room 345. All rights reserved.
+            © {new Date().getFullYear()} Fetch & Co. All rights reserved.
           </Text>
           <MedusaCTA />
         </div>
