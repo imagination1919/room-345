@@ -363,7 +363,7 @@ export default async function initial_data_seed({
           variants: [
             {
               title: "S / Teal",
-              sku: "COLLAR-S-BLACK",
+              sku: "COLLAR-S-TEAL",
               options: {
                 Size: "S",
                 Color: "Teal",
@@ -381,7 +381,7 @@ export default async function initial_data_seed({
             },
             {
               title: "S / Sand",
-              sku: "COLLAR-S-WHITE",
+              sku: "COLLAR-S-SAND",
               options: {
                 Size: "S",
                 Color: "Sand",
@@ -399,7 +399,7 @@ export default async function initial_data_seed({
             },
             {
               title: "M / Teal",
-              sku: "COLLAR-M-BLACK",
+              sku: "COLLAR-M-TEAL",
               options: {
                 Size: "M",
                 Color: "Teal",
@@ -417,7 +417,7 @@ export default async function initial_data_seed({
             },
             {
               title: "M / Sand",
-              sku: "COLLAR-M-WHITE",
+              sku: "COLLAR-M-SAND",
               options: {
                 Size: "M",
                 Color: "Sand",
@@ -435,7 +435,7 @@ export default async function initial_data_seed({
             },
             {
               title: "L / Teal",
-              sku: "COLLAR-L-BLACK",
+              sku: "COLLAR-L-TEAL",
               options: {
                 Size: "L",
                 Color: "Teal",
@@ -453,7 +453,7 @@ export default async function initial_data_seed({
             },
             {
               title: "L / Sand",
-              sku: "COLLAR-L-WHITE",
+              sku: "COLLAR-L-SAND",
               options: {
                 Size: "L",
                 Color: "Sand",
@@ -471,7 +471,7 @@ export default async function initial_data_seed({
             },
             {
               title: "XL / Teal",
-              sku: "COLLAR-XL-BLACK",
+              sku: "COLLAR-XL-TEAL",
               options: {
                 Size: "XL",
                 Color: "Teal",
@@ -489,7 +489,7 @@ export default async function initial_data_seed({
             },
             {
               title: "XL / Sand",
-              sku: "COLLAR-XL-WHITE",
+              sku: "COLLAR-XL-SAND",
               options: {
                 Size: "XL",
                 Color: "Sand",
