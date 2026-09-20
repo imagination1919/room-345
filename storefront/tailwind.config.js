@@ -34,12 +34,16 @@ module.exports = {
           80: "#1F2937",
           90: "#111827",
         },
-        ink: "#14343B", // dark-teal text / on-yellow label
-        aqua: "#17A2B8", // links / interactive accent
-        sunny: "#FFC942", // CTA / primary button
-        cloud: "#EAF3F5", // light surface (deeper)
-        mist: "#F4F8F9", // light surface (subtle)
+        forest: "#1E5631", // primary brand green (header/footer/buttons)
+        "forest-deep": "#14401F", // hover/pressed shade
+        leaf: "#3F8354", // links / interactive accent
+        gold: "#E3A93B", // hand-styled CTA fill
+        "gold-deep": "#C98F22", // hand-styled CTA hover
+        cream: "#FBF2DE", // promo-banner surface
+        mist: "#EEF4EC", // soft surface tint
+        ink: "#20302A", // body text
         paper: "#FFFFFF", // base background
+        denim: "#4F7CA6", // secondary accent for category-card variety
       },
       borderRadius: {
         none: "0px",
@@ -76,11 +80,12 @@ module.exports = {
           "sans-serif",
         ],
         display: [
-          "var(--font-quicksand)",
+          "var(--font-fredoka)",
           "ui-sans-serif",
           "system-ui",
           "sans-serif",
         ],
+        script: ["var(--font-caveat)", "cursive"],
       },
       keyframes: {
         ring: {

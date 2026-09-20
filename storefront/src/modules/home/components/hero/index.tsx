@@ -1,6 +1,6 @@
-import Image from "next/image"
 import { Heading, Text } from "@medusajs/ui"
 import LocalizedClientLink from "@modules/common/components/localized-client-link"
+import HeroSlideshow from "./hero-slideshow"
 
 const Hero = () => {
   return (
@@ -23,7 +23,7 @@ const Hero = () => {
           <div className="pt-2">
             <LocalizedClientLink
               href="/store"
-              className="inline-flex items-center justify-center rounded-large bg-sunny px-6 py-3 txt-compact-large-plus text-ink transition-[filter] hover:brightness-95"
+              className="inline-flex items-center justify-center rounded-full bg-gold px-6 py-3 txt-compact-large-plus text-ink transition-[filter] hover:brightness-95"
               data-testid="hero-shop-all-link"
             >
               Shop all
@@ -31,16 +31,7 @@ const Hero = () => {
           </div>
         </div>
 
-        <div className="relative aspect-[4/3] w-full">
-          <Image
-            src="/hero-fetch.svg"
-            alt="Illustrated dog and cat surrounded by paw prints"
-            fill
-            priority
-            sizes="(max-width: 1024px) 100vw, 50vw"
-            className="object-contain"
-          />
-        </div>
+        <HeroSlideshow />
       </div>
     </div>
   )

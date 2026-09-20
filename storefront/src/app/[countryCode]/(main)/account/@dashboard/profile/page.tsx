@@ -12,7 +12,7 @@ import { retrieveCustomer } from "@lib/data/customer"
 
 export const metadata: Metadata = {
   title: "Profile",
-  description: "View and edit your Fetch & Co. profile.",
+  description: "View and edit your Fetch Pet Supply profile.",
 }
 
 export default async function Profile() {

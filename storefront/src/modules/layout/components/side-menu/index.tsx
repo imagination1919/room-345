@@ -22,9 +22,10 @@ type SideMenuProps = {
   regions: HttpTypes.StoreRegion[] | null
   locales: Locale[] | null
   currentLocale: string | null
+  categories?: HttpTypes.StoreProductCategory[]
 }
 
-const SideMenu = ({ regions, locales, currentLocale }: SideMenuProps) => {
+const SideMenu = ({ regions, locales, currentLocale, categories }: SideMenuProps) => {
   const countryToggleState = useToggleState()
   const languageToggleState = useToggleState()
 
@@ -45,7 +46,7 @@ const SideMenu = ({ regions, locales, currentLocale }: SideMenuProps) => {
 
               {open && (
                 <div
-                  className="fixed inset-0 z-[50] bg-ink/10 pointer-events-auto"
+                  className="fixed inset-0 z-[50] bg-forest/10 pointer-events-auto"
                   onClick={close}
                   data-testid="side-menu-backdrop"
                 />
@@ -86,6 +87,18 @@ const SideMenu = ({ regions, locales, currentLocale }: SideMenuProps) => {
                           </li>
                         )
                       })}
+                      {categories?.map((category) => (
+                        <li key={category.id}>
+                          <LocalizedClientLink
+                            href={`/categories/${category.handle}`}
+                            className="text-3xl leading-10 hover:text-ui-fg-interactive"
+                            onClick={close}
+                            data-testid="category-link"
+                          >
+                            {category.name}
+                          </LocalizedClientLink>
+                        </li>
+                      ))}
                     </ul>
                     <div className="flex flex-col gap-y-6">
                       {!!locales?.length && (
@@ -126,8 +139,8 @@ const SideMenu = ({ regions, locales, currentLocale }: SideMenuProps) => {
                         />
                       </div>
                       <Text className="flex justify-between txt-compact-small">
-                        © {new Date().getFullYear()} Fetch & Co. All rights
-                        reserved.
+                        © {new Date().getFullYear()} Fetch Pet Supply. All
+                        rights reserved.
                       </Text>
                     </div>
                   </div>

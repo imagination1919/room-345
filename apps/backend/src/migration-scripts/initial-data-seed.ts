@@ -304,6 +304,7 @@ export default async function initial_data_seed({
       product_categories: [
         {
           name: "Collars & Leashes",
+          handle: "collars-leashes",
           is_active: true,
         },
         {
@@ -316,6 +317,7 @@ export default async function initial_data_seed({
         },
         {
           name: "Travel & Carriers",
+          handle: "travel-carriers",
           is_active: true,
         },
       ],

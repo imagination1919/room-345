@@ -1,6 +1,6 @@
 import { ImageResponse } from "next/og"
 
-export const alt = "Fetch & Co. — everything your best friend needs"
+export const alt = "Fetch Pet Supply — everything your best friend needs"
 export const size = { width: 1200, height: 630 }
 export const contentType = "image/png"
 
@@ -15,7 +15,7 @@ export default async function OpengraphImage() {
           flexDirection: "column",
           alignItems: "flex-start",
           justifyContent: "center",
-          backgroundColor: "#17A2B8",
+          backgroundColor: "#1E5631",
           padding: "96px",
           fontFamily: "sans-serif",
         }}
@@ -25,7 +25,7 @@ export default async function OpengraphImage() {
             width: 72,
             height: 72,
             borderRadius: 18,
-            backgroundColor: "#FFC942",
+            backgroundColor: "#E3A93B",
             marginBottom: 32,
           }}
         />
@@ -37,9 +37,9 @@ export default async function OpengraphImage() {
             lineHeight: 1.1,
           }}
         >
-          Fetch & Co.
+          Fetch Pet Supply
         </div>
-        <div style={{ fontSize: 40, color: "#FFC942", marginTop: 20 }}>
+        <div style={{ fontSize: 40, color: "#E3A93B", marginTop: 20 }}>
           Everything your best friend needs
         </div>
       </div>

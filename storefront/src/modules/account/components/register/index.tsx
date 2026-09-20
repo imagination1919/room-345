@@ -20,10 +20,10 @@ const Register = ({ setCurrentView }: Props) => {
       className="max-w-sm flex flex-col items-center"
       data-testid="register-page"
     >
-      <h1 className="text-large-semi mb-6">Join the Fetch & Co. pack</h1>
+      <h1 className="text-large-semi mb-6">Join the Fetch Pet Supply pack</h1>
       <p className="text-center text-base-regular text-ui-fg-base mb-4">
-        Create your Fetch & Co. account for faster checkout, order tracking and
-        the good stuff first.
+        Create your Fetch Pet Supply account for faster checkout, order
+        tracking and the good stuff first.
       </p>
       <form className="w-full flex flex-col" action={formAction}>
         <div className="flex flex-col w-full gap-y-2">
@@ -67,7 +67,7 @@ const Register = ({ setCurrentView }: Props) => {
         </div>
         <ErrorMessage error={message} data-testid="register-error" />
         <span className="text-center text-ui-fg-base text-small-regular mt-6">
-          By creating an account, you agree to Fetch & Co.&apos;s{" "}
+          By creating an account, you agree to Fetch Pet Supply&apos;s{" "}
           <LocalizedClientLink
             href="/content/privacy-policy"
             className="underline"

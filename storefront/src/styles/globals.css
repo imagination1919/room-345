@@ -35,8 +35,8 @@
   select:-webkit-autofill,
   select:-webkit-autofill:hover,
   select:-webkit-autofill:focus {
-    border: 1px solid #17a2b8;
-    -webkit-text-fill-color: #14343b;
+    border: 1px solid #3f8354;
+    -webkit-text-fill-color: #20302a;
     -webkit-box-shadow: 0 0 0px 1000px #ffffff inset;
     transition: background-color 5000s ease-in-out 0s;
   }
@@ -55,7 +55,7 @@
   }
 
   .contrast-btn {
-    @apply px-4 py-2 border border-ui-border-strong rounded-full hover:bg-sunny hover:text-ink hover:border-sunny transition-colors duration-200 ease-in;
+    @apply px-4 py-2 border border-ui-border-strong rounded-full hover:bg-gold hover:text-ink hover:border-gold transition-colors duration-200 ease-in;
   }
 
   .text-xsmall-regular {
@@ -112,7 +112,7 @@
 }
 
 /*
- * "Fetch & Co." — light pet-shop palette.
+ * "Fetch Pet Supply" — forest green / gold / cream palette.
  * Overrides the @medusajs/ui-preset design tokens (see
  * node_modules/@medusajs/ui-preset/src/theme/tokens/colors.ts) so every
  * @medusajs/ui component and `ui-*` Tailwind class picks up the brand
@@ -124,59 +124,59 @@
   :root {
     /* Backgrounds */
     --bg-base: #ffffff;
-    --bg-base-hover: #f4f8f9;
-    --bg-base-pressed: #eaf3f5;
-    --bg-subtle: #f4f8f9;
-    --bg-subtle-hover: #eaf3f5;
-    --bg-subtle-pressed: #dfedef;
+    --bg-base-hover: #f5f9f4;
+    --bg-base-pressed: #eaf2e8;
+    --bg-subtle: #eef4ec;
+    --bg-subtle-hover: #e3eee1;
+    --bg-subtle-pressed: #d5e5d2;
     --bg-component: #ffffff;
-    --bg-component-hover: #f4f8f9;
-    --bg-component-pressed: #eaf3f5;
+    --bg-component-hover: #eef4ec;
+    --bg-component-pressed: #e3eee1;
     --bg-field: #ffffff;
-    --bg-field-hover: #f4f8f9;
+    --bg-field-hover: #eef4ec;
     --bg-field-component: #ffffff;
-    --bg-field-component-hover: #f4f8f9;
-    --bg-disabled: #f4f8f9;
-    --bg-overlay: rgba(20, 52, 59, 0.4);
-    --bg-interactive: #17a2b8;
-    --bg-highlight: rgba(23, 162, 184, 0.1);
-    --bg-highlight-hover: rgba(23, 162, 184, 0.18);
-    --bg-switch-off: #cbd8dc;
-    --bg-switch-off-hover: #b9cacf;
+    --bg-field-component-hover: #eef4ec;
+    --bg-disabled: #eef4ec;
+    --bg-overlay: rgba(32, 48, 42, 0.4);
+    --bg-interactive: #3f8354;
+    --bg-highlight: rgba(63, 131, 84, 0.1);
+    --bg-highlight-hover: rgba(63, 131, 84, 0.18);
+    --bg-switch-off: #d7e3d3;
+    --bg-switch-off-hover: #c3d6bd;
 
     /* Borders */
-    --border-base: rgba(20, 52, 59, 0.12);
-    --border-strong: rgba(20, 52, 59, 0.22);
-    --border-interactive: #17a2b8;
-    --border-menu-top: rgba(20, 52, 59, 0.08);
-    --border-menu-bot: rgba(20, 52, 59, 0.12);
+    --border-base: rgba(32, 48, 42, 0.12);
+    --border-strong: rgba(32, 48, 42, 0.22);
+    --border-interactive: #3f8354;
+    --border-menu-top: rgba(32, 48, 42, 0.08);
+    --border-menu-bot: rgba(32, 48, 42, 0.12);
 
     /* Text */
-    --fg-base: #14343b;
-    --fg-subtle: #4a6b72;
-    --fg-muted: #7a969c;
-    --fg-disabled: #a9bec3;
-    --fg-interactive: #17a2b8;
-    --fg-interactive-hover: #0f7c8c;
+    --fg-base: #20302a;
+    --fg-subtle: #4a5d50;
+    --fg-muted: #7c8f80;
+    --fg-disabled: #aab8ac;
+    --fg-interactive: #3f8354;
+    --fg-interactive-hover: #14401f;
     --fg-on-inverted: #ffffff;
     --fg-on-color: #ffffff;
 
-    /* Buttons: primary (inverted) = sunny yellow fill, label = dark teal */
-    --button-inverted: #ffc942;
-    --button-inverted-hover: #f2bb2e;
-    --button-inverted-pressed: #e4ad1c;
-    --contrast-fg-primary: #14343b;
-    --contrast-fg-secondary: rgba(20, 52, 59, 0.6);
+    /* Buttons: primary (inverted) = forest green fill, label = white */
+    --button-inverted: #1e5631;
+    --button-inverted-hover: #17492a;
+    --button-inverted-pressed: #103820;
+    --contrast-fg-primary: #ffffff;
+    --contrast-fg-secondary: rgba(255, 255, 255, 0.7);
     --button-neutral: #ffffff;
-    --button-neutral-hover: #f4f8f9;
-    --button-neutral-pressed: #eaf3f5;
-    --button-transparent-hover: rgba(23, 162, 184, 0.08);
-    --button-transparent-pressed: rgba(23, 162, 184, 0.16);
+    --button-neutral-hover: #eef4ec;
+    --button-neutral-pressed: #e3eee1;
+    --button-transparent-hover: rgba(63, 131, 84, 0.08);
+    --button-transparent-pressed: rgba(63, 131, 84, 0.16);
 
-    /* Contrast surfaces (tooltips, chips) — dark teal for legibility */
-    --contrast-bg-base: #14343b;
-    --contrast-bg-base-hover: #1c4149;
-    --contrast-bg-base-pressed: #0f272c;
+    /* Contrast surfaces (tooltips, chips) */
+    --contrast-bg-base: #1e5631;
+    --contrast-bg-base-hover: #24693b;
+    --contrast-bg-base-pressed: #123d22;
   }
 }
 
@@ -212,5 +212,5 @@ h4,
 .text-2xl-semi,
 .text-3xl-regular,
 .text-3xl-semi {
-  font-family: var(--font-quicksand), ui-sans-serif, system-ui, sans-serif;
+  font-family: var(--font-fredoka), ui-sans-serif, system-ui, sans-serif;
 }

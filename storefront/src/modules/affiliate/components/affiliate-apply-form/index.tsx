@@ -47,7 +47,7 @@ const AffiliateApplyForm = () => {
       data-testid="affiliate-apply-form"
     >
       <Text className="text-ui-fg-subtle">
-        Join the Fetch & Co. affiliate program to earn commission on orders
+        Join the Fetch Pet Supply affiliate program to earn commission on orders
         referred through your personal link.
       </Text>
       <Input

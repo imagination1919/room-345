@@ -29,7 +29,7 @@ export default function CheckoutLayout({
             className="txt-compact-xlarge-plus font-display text-ui-fg-subtle hover:text-ui-fg-base"
             data-testid="store-link"
           >
-            Fetch & Co.
+            Fetch Pet Supply
           </LocalizedClientLink>
           <div className="flex-1 basis-0" />
         </nav>

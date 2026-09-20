@@ -1,13 +1,15 @@
 import { Metadata } from "next"
 
-import FeaturedProducts from "@modules/home/components/featured-products"
 import Hero from "@modules/home/components/hero"
-import { listCollections } from "@lib/data/collections"
+import CategoryGrid from "@modules/home/components/category-grid"
+import BestSellers from "@modules/home/components/best-sellers"
+import PromoBanner from "@modules/home/components/promo-banner"
+import TrustBadges from "@modules/home/components/trust-badges"
 import { getRegion } from "@lib/data/regions"
 
 export const metadata: Metadata = {
   description:
-    "Thoughtfully made food, gear and comfy things for dogs and cats — from Fetch & Co.",
+    "Thoughtfully made food, gear and comfy things for dogs and cats — from Fetch Pet Supply.",
 }
 
 export default async function Home(props: {
@@ -19,22 +21,17 @@ export default async function Home(props: {
 
   const region = await getRegion(countryCode)
 
-  const { collections } = await listCollections({
-    fields: "id, handle, title",
-  })
-
-  if (!collections || !region) {
+  if (!region) {
     return null
   }
 
   return (
     <>
       <Hero />
-      <div className="py-12">
-        <ul className="flex flex-col gap-x-6">
-          <FeaturedProducts collections={collections} region={region} />
-        </ul>
-      </div>
+      <CategoryGrid />
+      <BestSellers region={region} />
+      <PromoBanner />
+      <TrustBadges />
     </>
   )
 }
