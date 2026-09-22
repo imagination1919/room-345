@@ -120,9 +120,9 @@ export default async function Footer() {
             <a href="#" className="hover:text-paper">
               Terms of Service
             </a>
-            <a href="#" className="hover:text-paper">
+            <LocalizedClientLink href="/contact" className="hover:text-paper">
               Contact Us
-            </a>
+            </LocalizedClientLink>
           </div>
         </div>
       </div>

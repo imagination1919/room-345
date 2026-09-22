@@ -21,6 +21,9 @@ module.exports = defineConfig({
     {
       resolve: "./src/modules/affiliate",
     },
+    {
+      resolve: "./src/modules/contact",
+    },
     // projectConfig.redisUrl only backs the session store — event bus and
     // locking need their own Redis-backed providers, same pattern Medusa
     // Cloud registers automatically, wired in explicitly here since this
