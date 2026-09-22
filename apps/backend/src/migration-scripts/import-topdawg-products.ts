@@ -13,6 +13,7 @@ import {
 } from "@medusajs/medusa/core-flows"
 
 const CSV_PATH =
+  process.env.TOPDAWG_CSV_PATH ??
   "/home/nino/dev/top_dog_data/csv_favorite-export-active-products-2026-09-21_23-50-33.csv"
 const PRODUCT_BATCH_SIZE = 25
 const INVENTORY_BATCH_SIZE = 200
