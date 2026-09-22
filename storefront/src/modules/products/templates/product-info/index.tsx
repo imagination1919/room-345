@@ -1,6 +1,7 @@
 import { HttpTypes } from "@medusajs/types"
-import { Heading, Text } from "@medusajs/ui"
+import { Heading } from "@medusajs/ui"
 import LocalizedClientLink from "@modules/common/components/localized-client-link"
+import { sanitizeDescription } from "@lib/util/sanitize-description"
 
 type ProductInfoProps = {
   product: HttpTypes.StoreProduct
@@ -26,12 +27,13 @@ const ProductInfo = ({ product }: ProductInfoProps) => {
           {product.title}
         </Heading>
 
-        <Text
-          className="text-medium text-ui-fg-subtle whitespace-pre-line"
+        <div
+          className="text-medium text-ui-fg-subtle [&_p]:mb-3 [&_p:last-child]:mb-0 [&_ul]:list-disc [&_ul]:pl-5 [&_ul]:mb-3 [&_ol]:list-decimal [&_ol]:pl-5 [&_ol]:mb-3 [&_li]:mb-1 [&_h1]:txt-large-plus [&_h2]:txt-large-plus [&_h3]:txt-medium-plus [&_h4]:txt-medium-plus [&_h1]:mb-2 [&_h2]:mb-2 [&_h3]:mb-2 [&_h4]:mb-2 [&_strong]:font-semibold [&_b]:font-semibold [&_em]:italic [&_i]:italic"
           data-testid="product-description"
-        >
-          {product.description}
-        </Text>
+          dangerouslySetInnerHTML={{
+            __html: sanitizeDescription(product.description),
+          }}
+        />
       </div>
     </div>
   )
