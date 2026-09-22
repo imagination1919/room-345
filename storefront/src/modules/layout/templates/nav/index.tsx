@@ -23,8 +23,8 @@ export default async function Nav() {
 
   return (
     <div className="sticky top-0 inset-x-0 z-50 group">
-      <header className="relative h-16 mx-auto border-b duration-200 bg-ui-bg-base border-ui-border-base">
-        <nav className="content-container txt-xsmall-plus text-ui-fg-subtle flex items-center justify-between w-full h-full text-small-regular">
+      <header className="relative min-h-16 mx-auto border-b duration-200 bg-forest border-forest-deep">
+        <nav className="content-container txt-xsmall-plus text-paper flex items-center justify-between w-full min-h-16 py-3 gap-4 text-small-regular">
           <div className="flex-1 basis-0 h-full flex items-center">
             <div className="h-full">
               <SideMenu
@@ -36,10 +36,10 @@ export default async function Nav() {
             </div>
           </div>
 
-          <div className="flex items-center h-full">
+          <div className="flex-1 flex items-center justify-center">
             <LocalizedClientLink
               href="/"
-              className="txt-compact-xlarge-plus font-display hover:text-ui-fg-base"
+              className="font-display font-semibold text-center leading-snug text-lg xsmall:text-xl small:text-2xl medium:text-3xl whitespace-nowrap hover:opacity-80"
               data-testid="nav-store-link"
             >
               Fetch Pet Supply
@@ -49,7 +49,7 @@ export default async function Nav() {
           <div className="flex items-center gap-x-6 h-full flex-1 basis-0 justify-end">
             <div className="hidden small:flex items-center gap-x-6 h-full">
               <LocalizedClientLink
-                className="hover:text-ui-fg-base"
+                className="hover:opacity-80"
                 href="/account"
                 data-testid="nav-account-link"
               >
@@ -59,7 +59,7 @@ export default async function Nav() {
             <Suspense
               fallback={
                 <LocalizedClientLink
-                  className="hover:text-ui-fg-base flex gap-2"
+                  className="hover:opacity-80 flex gap-2"
                   href="/cart"
                   data-testid="nav-cart-link"
                 >
@@ -72,23 +72,6 @@ export default async function Nav() {
           </div>
         </nav>
       </header>
-
-      {topLevelCategories.length > 0 && (
-        <div className="hidden small:block bg-ui-bg-base border-b border-ui-border-base">
-          <div className="content-container flex items-center justify-center gap-x-8 h-11 text-small-regular">
-            {topLevelCategories.map((category) => (
-              <LocalizedClientLink
-                key={category.id}
-                href={`/categories/${category.handle}`}
-                className="text-ui-fg-subtle hover:text-ui-fg-interactive"
-                data-testid="nav-category-link"
-              >
-                {category.name}
-              </LocalizedClientLink>
-            ))}
-          </div>
-        </div>
-      )}
     </div>
   )
 }

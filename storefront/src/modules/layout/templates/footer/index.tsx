@@ -4,59 +4,6 @@ import { clx } from "@medusajs/ui"
 
 import LocalizedClientLink from "@modules/common/components/localized-client-link"
 
-const SOCIAL_LINKS = [
-  {
-    name: "Instagram",
-    href: "#",
-    icon: (
-      <svg width="18" height="18" viewBox="0 0 24 24" fill="none">
-        <rect x="3" y="3" width="18" height="18" rx="5" stroke="currentColor" strokeWidth="1.6" />
-        <circle cx="12" cy="12" r="4.2" stroke="currentColor" strokeWidth="1.6" />
-        <circle cx="17.2" cy="6.8" r="1.1" fill="currentColor" />
-      </svg>
-    ),
-  },
-  {
-    name: "Facebook",
-    href: "#",
-    icon: (
-      <svg width="18" height="18" viewBox="0 0 24 24" fill="none">
-        <path
-          d="M15 8.5h2V5h-2c-2.2 0-4 1.8-4 4v2H9v3.5h2V21h3.5v-6.5H17l.5-3.5h-3V9c0-.6.4-1 1.5-1Z"
-          stroke="currentColor"
-          strokeWidth="1.4"
-          strokeLinejoin="round"
-        />
-      </svg>
-    ),
-  },
-  {
-    name: "Pinterest",
-    href: "#",
-    icon: (
-      <svg width="18" height="18" viewBox="0 0 24 24" fill="none">
-        <circle cx="12" cy="12" r="9" stroke="currentColor" strokeWidth="1.6" />
-        <path
-          d="M9.5 18c1-3.5 1.5-6 1.5-7.5a2 2 0 1 1 4 .3c0 1.3-.9 3.7-1.3 4.9-.4 1.1.4 2 1.5 1.6 1.9-.7 2.8-2.9 2.8-4.8 0-2.8-2.3-5.1-5.6-5.1-3.6 0-6 2.6-6 5.5 0 1.2.4 2.2 1.2 2.9"
-          stroke="currentColor"
-          strokeWidth="1.4"
-          strokeLinecap="round"
-        />
-      </svg>
-    ),
-  },
-  {
-    name: "YouTube",
-    href: "#",
-    icon: (
-      <svg width="18" height="18" viewBox="0 0 24 24" fill="none">
-        <rect x="3" y="6" width="18" height="12" rx="4" stroke="currentColor" strokeWidth="1.6" />
-        <path d="M10.5 9.5v5l4.5-2.5-4.5-2.5Z" fill="currentColor" />
-      </svg>
-    ),
-  },
-]
-
 export default async function Footer() {
   const { collections } = await listCollections({
     fields: "*products",
@@ -77,18 +24,6 @@ export default async function Footer() {
             <p className="txt-small text-paper/70 max-w-xs">
               Everything your best friend needs.
             </p>
-            <div className="flex items-center gap-x-4 pt-2 text-paper/80">
-              {SOCIAL_LINKS.map((social) => (
-                <a
-                  key={social.name}
-                  href={social.href}
-                  aria-label={social.name}
-                  className="hover:text-paper transition-colors"
-                >
-                  {social.icon}
-                </a>
-              ))}
-            </div>
           </div>
           <div className="text-small-regular gap-10 md:gap-x-16 grid grid-cols-2">
             {productCategories && productCategories?.length > 0 && (
