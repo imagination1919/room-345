@@ -1,24 +1,45 @@
 import { getBaseURL } from "@lib/util/env"
 import { Metadata } from "next"
+import { Figtree, Fredoka, Caveat } from "next/font/google"
 import "styles/globals.css"
+
+const figtree = Figtree({
+  subsets: ["latin"],
+  display: "swap",
+  variable: "--font-figtree",
+})
+
+const fredoka = Fredoka({
+  subsets: ["latin"],
+  display: "swap",
+  variable: "--font-fredoka",
+})
+
+const caveat = Caveat({
+  subsets: ["latin"],
+  weight: ["600", "700"],
+  display: "swap",
+  variable: "--font-caveat",
+})
 
 export const metadata: Metadata = {
   metadataBase: new URL(getBaseURL()),
   title: {
-    default: "Room 345",
-    template: "%s | Room 345",
+    default: "Fetch Pet Supply",
+    template: "%s | Fetch Pet Supply",
   },
-  // RTA (Restricted to Adults) label — recognized by parental-control
-  // software so this adult-oriented storefront can be auto-filtered.
-  other: {
-    rating: "RTA-5042-1996-1400-1577-RTA",
-  },
+  description:
+    "Fetch Pet Supply — thoughtfully made food, gear and comfy things for dogs and cats.",
 }
 
 export default function RootLayout(props: { children: React.ReactNode }) {
   return (
-    <html lang="en" data-mode="light">
-      <body className="bg-ui-bg-base text-ui-fg-base">
+    <html
+      lang="en"
+      data-mode="light"
+      className={`${figtree.variable} ${fredoka.variable} ${caveat.variable}`}
+    >
+      <body className="font-sans antialiased bg-ui-bg-base text-ui-fg-base">
         <main className="relative">{props.children}</main>
       </body>
     </html>

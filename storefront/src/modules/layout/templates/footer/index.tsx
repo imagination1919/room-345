@@ -1,9 +1,8 @@
 import { listCategories } from "@lib/data/categories"
 import { listCollections } from "@lib/data/collections"
-import { Text, clx } from "@medusajs/ui"
+import { clx } from "@medusajs/ui"
 
 import LocalizedClientLink from "@modules/common/components/localized-client-link"
-import MedusaCTA from "@modules/layout/components/medusa-cta"
 
 export default async function Footer() {
   const { collections } = await listCollections({
@@ -12,23 +11,24 @@ export default async function Footer() {
   const productCategories = await listCategories()
 
   return (
-    <footer className="border-t border-ui-border-base w-full">
+    <footer className="bg-forest text-paper w-full">
       <div className="content-container flex flex-col w-full">
-        <div className="flex flex-col gap-y-6 xsmall:flex-row items-start justify-between py-40">
-          <div>
+        <div className="flex flex-col gap-y-8 xsmall:flex-row items-start justify-between py-16 small:py-20">
+          <div className="flex flex-col gap-y-3">
             <LocalizedClientLink
               href="/"
-              className="txt-compact-xlarge-plus text-ui-fg-subtle hover:text-ui-fg-base uppercase"
+              className="txt-compact-xlarge-plus font-display text-paper hover:text-paper/80"
             >
-              Room 345
+              Fetch Pet Supply
             </LocalizedClientLink>
+            <p className="txt-small text-paper/70 max-w-xs">
+              Everything your best friend needs.
+            </p>
           </div>
-          <div className="text-small-regular gap-10 md:gap-x-16 grid grid-cols-2 sm:grid-cols-3">
+          <div className="text-small-regular gap-10 md:gap-x-16 grid grid-cols-2">
             {productCategories && productCategories?.length > 0 && (
               <div className="flex flex-col gap-y-2">
-                <span className="txt-small-plus txt-ui-fg-base">
-                  Categories
-                </span>
+                <span className="txt-small-plus text-paper">Categories</span>
                 <ul
                   className="grid grid-cols-1 gap-2"
                   data-testid="footer-categories"
@@ -47,12 +47,12 @@ export default async function Footer() {
 
                     return (
                       <li
-                        className="flex flex-col gap-2 text-ui-fg-subtle txt-small"
+                        className="flex flex-col gap-2 text-paper/70 txt-small"
                         key={c.id}
                       >
                         <LocalizedClientLink
                           className={clx(
-                            "hover:text-ui-fg-base",
+                            "hover:text-paper",
                             children && "txt-small-plus"
                           )}
                           href={`/categories/${c.handle}`}
@@ -66,7 +66,7 @@ export default async function Footer() {
                               children.map((child) => (
                                 <li key={child.id}>
                                   <LocalizedClientLink
-                                    className="hover:text-ui-fg-base"
+                                    className="hover:text-paper"
                                     href={`/categories/${child.handle}`}
                                     data-testid="category-link"
                                   >
@@ -84,12 +84,10 @@ export default async function Footer() {
             )}
             {collections && collections.length > 0 && (
               <div className="flex flex-col gap-y-2">
-                <span className="txt-small-plus txt-ui-fg-base">
-                  Collections
-                </span>
+                <span className="txt-small-plus text-paper">Collections</span>
                 <ul
                   className={clx(
-                    "grid grid-cols-1 gap-2 text-ui-fg-subtle txt-small",
+                    "grid grid-cols-1 gap-2 text-paper/70 txt-small",
                     {
                       "grid-cols-2": (collections?.length || 0) > 3,
                     }
@@ -98,7 +96,7 @@ export default async function Footer() {
                   {collections?.slice(0, 6).map((c) => (
                     <li key={c.id}>
                       <LocalizedClientLink
-                        className="hover:text-ui-fg-base"
+                        className="hover:text-paper"
                         href={`/collections/${c.handle}`}
                       >
                         {c.title}
@@ -108,48 +106,24 @@ export default async function Footer() {
                 </ul>
               </div>
             )}
-            <div className="flex flex-col gap-y-2">
-              <span className="txt-small-plus txt-ui-fg-base">Medusa</span>
-              <ul className="grid grid-cols-1 gap-y-2 text-ui-fg-subtle txt-small">
-                <li>
-                  <a
-                    href="https://github.com/medusajs"
-                    target="_blank"
-                    rel="noreferrer"
-                    className="hover:text-ui-fg-base"
-                  >
-                    GitHub
-                  </a>
-                </li>
-                <li>
-                  <a
-                    href="https://docs.medusajs.com"
-                    target="_blank"
-                    rel="noreferrer"
-                    className="hover:text-ui-fg-base"
-                  >
-                    Documentation
-                  </a>
-                </li>
-                <li>
-                  <a
-                    href="https://github.com/medusajs/nextjs-starter-medusa"
-                    target="_blank"
-                    rel="noreferrer"
-                    className="hover:text-ui-fg-base"
-                  >
-                    Source code
-                  </a>
-                </li>
-              </ul>
-            </div>
           </div>
         </div>
-        <div className="flex w-full mb-16 justify-between text-ui-fg-muted">
-          <Text className="txt-compact-small">
-            © {new Date().getFullYear()} Room 345. All rights reserved.
-          </Text>
-          <MedusaCTA />
+        <div className="flex flex-col small:flex-row gap-4 w-full py-6 border-t border-paper/20 justify-between text-paper/60">
+          <p className="txt-compact-small">
+            © {new Date().getFullYear()} Fetch Pet Supply. All rights
+            reserved.
+          </p>
+          <div className="flex gap-x-6 txt-compact-small">
+            <a href="#" className="hover:text-paper">
+              Privacy Policy
+            </a>
+            <a href="#" className="hover:text-paper">
+              Terms of Service
+            </a>
+            <a href="#" className="hover:text-paper">
+              Contact Us
+            </a>
+          </div>
         </div>
       </div>
     </footer>

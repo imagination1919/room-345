@@ -1,16 +1,15 @@
 import { Metadata } from "next"
-import { cookies } from "next/headers"
-import { Button, Text } from "@medusajs/ui"
 
-import FeaturedProducts from "@modules/home/components/featured-products"
 import Hero from "@modules/home/components/hero"
-import LocalizedClientLink from "@modules/common/components/localized-client-link"
-import { listCollections } from "@lib/data/collections"
+import CategoryGrid from "@modules/home/components/category-grid"
+import BestSellers from "@modules/home/components/best-sellers"
+import PromoBanner from "@modules/home/components/promo-banner"
+import TrustBadges from "@modules/home/components/trust-badges"
 import { getRegion } from "@lib/data/regions"
 
 export const metadata: Metadata = {
   description:
-    "A performant frontend ecommerce starter template with Next.js 15 and Medusa.",
+    "Thoughtfully made food, gear and comfy things for dogs and cats — from Fetch Pet Supply.",
 }
 
 export default async function Home(props: {
@@ -22,37 +21,17 @@ export default async function Home(props: {
 
   const region = await getRegion(countryCode)
 
-  const { collections } = await listCollections({
-    fields: "id, handle, title",
-  })
-
-  if (!collections || !region) {
+  if (!region) {
     return null
   }
-
-  const cookieStore = await cookies()
-  const isAgeVerified = cookieStore.get("age_verified")?.value === "true"
 
   return (
     <>
       <Hero />
-      <div className="py-12">
-        {isAgeVerified ? (
-          <ul className="flex flex-col gap-x-6">
-            <FeaturedProducts collections={collections} region={region} />
-          </ul>
-        ) : (
-          <div className="content-container flex flex-col items-center text-center gap-y-4 py-12">
-            <Text className="text-ui-fg-subtle">
-              You must confirm you are 18 years of age or older to view our
-              products.
-            </Text>
-            <LocalizedClientLink href={`/age-verify?redirect=/${countryCode}`}>
-              <Button variant="primary">Enter Site</Button>
-            </LocalizedClientLink>
-          </div>
-        )}
-      </div>
+      <CategoryGrid />
+      <BestSellers region={region} />
+      <PromoBanner />
+      <TrustBadges />
     </>
   )
 }
