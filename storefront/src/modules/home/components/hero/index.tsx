@@ -1,4 +1,4 @@
-import { Heading, Text } from "@medusajs/ui"
+import Image from "next/image"
 import LocalizedClientLink from "@modules/common/components/localized-client-link"
 import HeroSlideshow from "./hero-slideshow"
 
@@ -7,19 +7,14 @@ const Hero = () => {
     <div className="relative w-full border-b border-ui-border-base bg-ui-bg-base overflow-hidden">
       <div className="content-container grid grid-cols-1 small:grid-cols-2 gap-8 small:gap-12 items-center py-16 small:py-24">
         <div className="flex flex-col gap-6 max-w-xl">
-          <span className="w-fit rounded-circle bg-ui-bg-highlight px-3 py-1 txt-compact-small-plus text-ui-fg-interactive">
-            New in — treats, toys &amp; travel gear
-          </span>
-          <Heading
-            level="h1"
-            className="text-3xl-semi small:text-[44px] small:leading-[52px] text-ui-fg-base"
-          >
-            Everything your best friend needs
-          </Heading>
-          <Text className="text-ui-fg-subtle text-large-regular">
-            Thoughtfully made food, gear and comfy things for dogs and cats —
-            picked by people who&apos;d do anything for a wagging tail.
-          </Text>
+          <Image
+            src="/harlies-pet-supply-logo.jpg"
+            alt="Harlie's Pet Supply — for your best friend"
+            width={1024}
+            height={1024}
+            priority
+            className="w-full max-w-sm"
+          />
           <div className="pt-2">
             <LocalizedClientLink
               href="/store"
