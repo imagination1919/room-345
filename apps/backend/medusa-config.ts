@@ -3,6 +3,12 @@ import { loadEnv, defineConfig } from '@medusajs/framework/utils'
 loadEnv(process.env.NODE_ENV || 'development', process.cwd())
 
 module.exports = defineConfig({
+  admin: {
+    // Lets prod serve the dashboard from a subfolder on a different
+    // domain (reverse-proxied there) instead of the default /app path;
+    // local dev is untouched since ADMIN_PATH is unset there.
+    path: (process.env.ADMIN_PATH || "/app") as `/${string}`,
+  },
   projectConfig: {
     databaseUrl: process.env.DATABASE_URL,
     redisUrl: process.env.REDIS_URL,
@@ -20,6 +26,9 @@ module.exports = defineConfig({
     },
     {
       resolve: "./src/modules/affiliate",
+    },
+    {
+      resolve: "./src/modules/contact",
     },
     // projectConfig.redisUrl only backs the session store — event bus and
     // locking need their own Redis-backed providers, same pattern Medusa
