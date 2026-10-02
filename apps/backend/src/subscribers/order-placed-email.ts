@@ -91,7 +91,7 @@ export default async function orderPlacedEmailHandler({
       to: order.email,
       channel: "email",
       content: {
-        subject: `Fetch Pet Supply — Order #${order.display_id} confirmed`,
+        subject: `Harlie's Pet Supply — Order #${order.display_id} confirmed`,
         html,
       },
     })

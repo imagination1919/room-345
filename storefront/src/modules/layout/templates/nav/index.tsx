@@ -42,7 +42,7 @@ export default async function Nav() {
               className="font-display font-semibold text-center leading-snug text-lg xsmall:text-xl small:text-2xl medium:text-3xl whitespace-nowrap hover:opacity-80"
               data-testid="nav-store-link"
             >
-              Fetch Pet Supply
+              Harlie&apos;s Pet Supply
             </LocalizedClientLink>
           </div>
 

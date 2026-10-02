@@ -19,7 +19,7 @@ export default async function Footer() {
               href="/"
               className="txt-compact-xlarge-plus font-display text-paper hover:text-paper/80"
             >
-              Fetch Pet Supply
+              Harlie&apos;s Pet Supply
             </LocalizedClientLink>
             <p className="txt-small text-paper/70 max-w-xs">
               Everything your best friend needs.
@@ -110,7 +110,7 @@ export default async function Footer() {
         </div>
         <div className="flex flex-col small:flex-row gap-4 w-full py-6 border-t border-paper/20 justify-between text-paper/60">
           <p className="txt-compact-small">
-            © {new Date().getFullYear()} Fetch Pet Supply. All rights
+            © {new Date().getFullYear()} Harlie&apos;s Pet Supply. All rights
             reserved.
           </p>
           <div className="flex gap-x-6 txt-compact-small">

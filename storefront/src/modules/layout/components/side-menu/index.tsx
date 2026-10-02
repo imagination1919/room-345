@@ -139,7 +139,7 @@ const SideMenu = ({ regions, locales, currentLocale, categories }: SideMenuProps
                         />
                       </div>
                       <Text className="flex justify-between txt-compact-small">
-                        © {new Date().getFullYear()} Fetch Pet Supply. All
+                        © {new Date().getFullYear()} Harlie&apos;s Pet Supply. All
                         rights reserved.
                       </Text>
                     </div>

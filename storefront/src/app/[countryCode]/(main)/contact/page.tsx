@@ -5,7 +5,7 @@ import ContactForm from "@modules/contact/components/contact-form"
 
 export const metadata: Metadata = {
   title: "Contact Us",
-  description: "Get in touch with Fetch Pet Supply.",
+  description: "Get in touch with Harlie's Pet Supply.",
 }
 
 export default function ContactPage() {

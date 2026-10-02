@@ -4,7 +4,7 @@ import LoginTemplate from "@modules/account/templates/login-template"
 
 export const metadata: Metadata = {
   title: "Sign in",
-  description: "Sign in to your Fetch Pet Supply account.",
+  description: "Sign in to your Harlie's Pet Supply account.",
 }
 
 export default function Login() {

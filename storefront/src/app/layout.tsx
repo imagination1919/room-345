@@ -25,11 +25,11 @@ const caveat = Caveat({
 export const metadata: Metadata = {
   metadataBase: new URL(getBaseURL()),
   title: {
-    default: "Fetch Pet Supply",
-    template: "%s | Fetch Pet Supply",
+    default: "Harlie's Pet Supply",
+    template: "%s | Harlie's Pet Supply",
   },
   description:
-    "Fetch Pet Supply — thoughtfully made food, gear and comfy things for dogs and cats.",
+    "Harlie's Pet Supply — thoughtfully made food, gear and comfy things for dogs and cats.",
 }
 
 export default function RootLayout(props: { children: React.ReactNode }) {

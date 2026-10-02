@@ -1,6 +1,6 @@
 import { ImageResponse } from "next/og"
 
-export const alt = "Fetch Pet Supply — everything your best friend needs"
+export const alt = "Harlie's Pet Supply — everything your best friend needs"
 export const size = { width: 1200, height: 630 }
 export const contentType = "image/png"
 
@@ -31,13 +31,13 @@ export default async function OpengraphImage() {
         />
         <div
           style={{
-            fontSize: 96,
+            fontSize: 80,
             fontWeight: 700,
             color: "#FFFFFF",
             lineHeight: 1.1,
           }}
         >
-          Fetch Pet Supply
+          Harlie&apos;s Pet Supply
         </div>
         <div style={{ fontSize: 40, color: "#E3A93B", marginTop: 20 }}>
           Everything your best friend needs

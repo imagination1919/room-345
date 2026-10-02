@@ -9,7 +9,7 @@ import { getRegion } from "@lib/data/regions"
 
 export const metadata: Metadata = {
   description:
-    "Thoughtfully made food, gear and comfy things for dogs and cats — from Fetch Pet Supply.",
+    "Thoughtfully made food, gear and comfy things for dogs and cats — from Harlie's Pet Supply.",
 }
 
 export default async function Home(props: {
