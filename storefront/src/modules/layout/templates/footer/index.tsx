@@ -120,9 +120,12 @@ export default async function Footer() {
             >
               Privacy Policy
             </LocalizedClientLink>
-            <a href="#" className="hover:text-paper">
+            <LocalizedClientLink
+              href="/content/terms-of-use"
+              className="hover:text-paper"
+            >
               Terms of Service
-            </a>
+            </LocalizedClientLink>
             <LocalizedClientLink href="/contact" className="hover:text-paper">
               Contact Us
             </LocalizedClientLink>
