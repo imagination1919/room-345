@@ -34,20 +34,23 @@ module.exports = {
           80: "#1F2937",
           90: "#111827",
         },
-        charcoal: "#0D0D0D",
-        espresso: "#2A1E12",
-        bronze: "#8A5E2B",
-        gold: "#C89B4A",
-        cream: "#F2E8D6",
-        taupe: "#CBB89B",
-        ivory: "#FAF8F3",
+        forest: "#1E5631", // primary brand green (header/footer/buttons)
+        "forest-deep": "#14401F", // hover/pressed shade
+        leaf: "#3F8354", // links / interactive accent
+        gold: "#E3A93B", // hand-styled CTA fill
+        "gold-deep": "#C98F22", // hand-styled CTA hover
+        cream: "#FBF2DE", // promo-banner surface
+        mist: "#EEF4EC", // soft surface tint
+        ink: "#20302A", // body text
+        paper: "#FFFFFF", // base background
+        denim: "#4F7CA6", // secondary accent for category-card variety
       },
       borderRadius: {
         none: "0px",
-        soft: "2px",
-        base: "4px",
-        rounded: "8px",
-        large: "16px",
+        soft: "4px",
+        base: "8px",
+        rounded: "12px",
+        large: "20px",
         circle: "9999px",
       },
       maxWidth: {
@@ -67,7 +70,7 @@ module.exports = {
       },
       fontFamily: {
         sans: [
-          "Inter",
+          "var(--font-figtree)",
           "-apple-system",
           "BlinkMacSystemFont",
           "Segoe UI",
@@ -76,6 +79,13 @@ module.exports = {
           "Ubuntu",
           "sans-serif",
         ],
+        display: [
+          "var(--font-fredoka)",
+          "ui-sans-serif",
+          "system-ui",
+          "sans-serif",
+        ],
+        script: ["var(--font-caveat)", "cursive"],
       },
       keyframes: {
         ring: {
