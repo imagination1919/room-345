@@ -114,9 +114,12 @@ export default async function Footer() {
             reserved.
           </p>
           <div className="flex gap-x-6 txt-compact-small">
-            <a href="#" className="hover:text-paper">
+            <LocalizedClientLink
+              href="/content/privacy-policy"
+              className="hover:text-paper"
+            >
               Privacy Policy
-            </a>
+            </LocalizedClientLink>
             <a href="#" className="hover:text-paper">
               Terms of Service
             </a>
