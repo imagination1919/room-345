@@ -2,9 +2,11 @@ import {
   createStep,
   createWorkflow,
   StepResponse,
+  transform,
   WorkflowResponse,
 } from "@medusajs/framework/workflows-sdk"
 import { MedusaError } from "@medusajs/framework/utils"
+import { emitEventStep } from "@medusajs/medusa/core-flows"
 import { CONTACT_MODULE } from "../../modules/contact"
 import ContactModuleService from "../../modules/contact/service"
 
@@ -57,6 +59,10 @@ const submitContactMessageWorkflow = createWorkflow(
   "submit-contact-message",
   (input: WorkflowInput) => {
     const contactMessage = submitContactMessageStep(input)
+    const eventData = transform({ contactMessage }, ({ contactMessage }) => ({
+      id: contactMessage.id,
+    }))
+    emitEventStep({ eventName: "contact_message.created", data: eventData })
     return new WorkflowResponse(contactMessage)
   }
 )
