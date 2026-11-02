@@ -6,6 +6,7 @@ import { useState } from "react"
 
 import LocalizedClientLink from "@modules/common/components/localized-client-link"
 import Thumbnail from "@modules/products/components/thumbnail"
+import { refreshSavedProducts } from "@lib/hooks/use-saved-products"
 import {
   moveWishlistItemToCart,
   removeWishlistItem,
@@ -39,6 +40,7 @@ const WishlistListItem = ({ wishlistId, item, readOnly }: Props) => {
   const handleRemove = async () => {
     setIsRemoving(true)
     await removeWishlistItem({ wishlistId, itemId: item.id })
+    await refreshSavedProducts()
     setIsRemoving(false)
     router.refresh()
   }

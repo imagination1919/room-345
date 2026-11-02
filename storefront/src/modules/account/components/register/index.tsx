@@ -7,12 +7,14 @@ import ErrorMessage from "@modules/checkout/components/error-message"
 import { SubmitButton } from "@modules/checkout/components/submit-button"
 import LocalizedClientLink from "@modules/common/components/localized-client-link"
 import { signup } from "@lib/data/customer"
+import { clearSavedProducts } from "@lib/hooks/use-saved-products"
 
 type Props = {
   setCurrentView: (view: LOGIN_VIEW) => void
+  redirectTo?: string
 }
 
-const Register = ({ setCurrentView }: Props) => {
+const Register = ({ setCurrentView, redirectTo }: Props) => {
   const [message, formAction] = useActionState(signup, null)
 
   return (
@@ -25,7 +27,14 @@ const Register = ({ setCurrentView }: Props) => {
         Create your Harlie&apos;s Pet Supply account for faster checkout, order
         tracking and the good stuff first.
       </p>
-      <form className="w-full flex flex-col" action={formAction}>
+      <form
+        className="w-full flex flex-col"
+        action={formAction}
+        onSubmit={clearSavedProducts}
+      >
+        {redirectTo && (
+          <input type="hidden" name="redirect_to" value={redirectTo} />
+        )}
         <div className="flex flex-col w-full gap-y-2">
           <Input
             label="First name"

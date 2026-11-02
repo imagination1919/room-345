@@ -59,6 +59,16 @@ export const updateCustomer = async (body: HttpTypes.StoreUpdateCustomer) => {
   return updateRes
 }
 
+// Only same-site absolute paths are allowed, so a crafted link can't bounce
+// a freshly signed-in user to another domain.
+const getSafeRedirect = (value: FormDataEntryValue | null): string | null => {
+  if (typeof value !== "string") {
+    return null
+  }
+
+  return /^\/(?![/\\])[^\s\\]*$/.test(value) ? value : null
+}
+
 export async function signup(_currentState: unknown, formData: FormData) {
   const password = formData.get("password") as string
   const customerForm = {
@@ -67,6 +77,9 @@ export async function signup(_currentState: unknown, formData: FormData) {
     last_name: formData.get("last_name") as string,
     phone: formData.get("phone") as string,
   }
+
+  const redirectTo = getSafeRedirect(formData.get("redirect_to"))
+  let createdCustomer: HttpTypes.StoreCustomer
 
   try {
     const token = await sdk.auth.register("customer", "emailpass", {
@@ -80,11 +93,12 @@ export async function signup(_currentState: unknown, formData: FormData) {
       ...(await getAuthHeaders()),
     }
 
-    const { customer: createdCustomer } = await sdk.store.customer.create(
+    const { customer } = await sdk.store.customer.create(
       customerForm,
       {},
       headers
     )
+    createdCustomer = customer
 
     const loginToken = await sdk.auth.login("customer", "emailpass", {
       email: customerForm.email,
@@ -97,16 +111,21 @@ export async function signup(_currentState: unknown, formData: FormData) {
     revalidateTag(customerCacheTag)
 
     await transferCart()
-
-    return createdCustomer
   } catch (error: any) {
     return error.toString()
   }
+
+  if (redirectTo) {
+    redirect(redirectTo)
+  }
+
+  return createdCustomer
 }
 
 export async function login(_currentState: unknown, formData: FormData) {
   const email = formData.get("email") as string
   const password = formData.get("password") as string
+  const redirectTo = getSafeRedirect(formData.get("redirect_to"))
 
   try {
     await sdk.auth
@@ -124,6 +143,10 @@ export async function login(_currentState: unknown, formData: FormData) {
     await transferCart()
   } catch (error: any) {
     return error.toString()
+  }
+
+  if (redirectTo) {
+    redirect(redirectTo)
   }
 }
 

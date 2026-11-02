@@ -7,6 +7,12 @@ export const metadata: Metadata = {
   description: "Sign in to your Harlie's Pet Supply account.",
 }
 
-export default function Login() {
-  return <LoginTemplate />
+export default async function Login({
+  searchParams,
+}: {
+  searchParams: Promise<{ redirect_to?: string }>
+}) {
+  const { redirect_to } = await searchParams
+
+  return <LoginTemplate redirectTo={redirect_to} />
 }

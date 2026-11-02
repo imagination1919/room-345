@@ -5,6 +5,7 @@ import { useEffect, useState } from "react"
 
 import Input from "@modules/common/components/input"
 import Modal from "@modules/common/components/modal"
+import { refreshSavedProducts } from "@lib/hooks/use-saved-products"
 import {
   addWishlistItem,
   createWishlist,
@@ -68,6 +69,7 @@ const AddToWishlistModal = ({
       }
 
       await addWishlistItem({ wishlistId, productId, variantId })
+      await refreshSavedProducts()
       toast.success("Added to wishlist")
       setNewListName("")
       close()

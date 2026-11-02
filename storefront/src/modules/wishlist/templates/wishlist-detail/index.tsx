@@ -8,6 +8,7 @@ import { useState } from "react"
 import Input from "@modules/common/components/input"
 import ShareWishlistControl from "@modules/wishlist/components/share-wishlist-control"
 import WishlistListItem from "@modules/wishlist/components/wishlist-list-item"
+import { refreshSavedProducts } from "@lib/hooks/use-saved-products"
 import {
   deleteWishlist,
   renameWishlist,
@@ -54,6 +55,7 @@ const WishlistDetail = ({ wishlist }: Props) => {
     setIsDeleting(true)
     try {
       await deleteWishlist(wishlist.id)
+      await refreshSavedProducts()
       router.push("/account/wishlists")
     } catch (error: any) {
       toast.error(error?.message ?? "Could not delete wishlist")
