@@ -31,10 +31,16 @@ const AddToWishlistButton = ({ productId, variantId, className }: Props) => {
 
     if (!customer) {
       toast.info("Log in to save items to a wishlist")
-      const returnTo = encodeURIComponent(
-        `${pathname}${window.location.search}`
-      )
-      router.push(`/${countryCode}/account?redirect_to=${returnTo}`)
+      const params = new URLSearchParams({
+        redirect_to: `${pathname}${window.location.search}`,
+        wishlist_product_id: productId,
+      })
+
+      if (variantId) {
+        params.set("wishlist_variant_id", variantId)
+      }
+
+      router.push(`/${countryCode}/account?${params.toString()}`)
       return
     }
 

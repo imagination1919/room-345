@@ -7,14 +7,18 @@ import ErrorMessage from "@modules/checkout/components/error-message"
 import { SubmitButton } from "@modules/checkout/components/submit-button"
 import LocalizedClientLink from "@modules/common/components/localized-client-link"
 import { signup } from "@lib/data/customer"
+import LoginRedirectFields, {
+  PendingWishlistItem,
+} from "@modules/account/components/login-redirect-fields"
 import { clearSavedProducts } from "@lib/hooks/use-saved-products"
 
 type Props = {
   setCurrentView: (view: LOGIN_VIEW) => void
   redirectTo?: string
+  wishlistItem?: PendingWishlistItem
 }
 
-const Register = ({ setCurrentView, redirectTo }: Props) => {
+const Register = ({ setCurrentView, redirectTo, wishlistItem }: Props) => {
   const [message, formAction] = useActionState(signup, null)
 
   return (
@@ -32,9 +36,7 @@ const Register = ({ setCurrentView, redirectTo }: Props) => {
         action={formAction}
         onSubmit={clearSavedProducts}
       >
-        {redirectTo && (
-          <input type="hidden" name="redirect_to" value={redirectTo} />
-        )}
+        <LoginRedirectFields redirectTo={redirectTo} wishlistItem={wishlistItem} />
         <div className="flex flex-col w-full gap-y-2">
           <Input
             label="First name"

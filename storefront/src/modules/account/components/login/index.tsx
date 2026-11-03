@@ -1,4 +1,7 @@
 import { login } from "@lib/data/customer"
+import LoginRedirectFields, {
+  PendingWishlistItem,
+} from "@modules/account/components/login-redirect-fields"
 import { clearSavedProducts } from "@lib/hooks/use-saved-products"
 import { LOGIN_VIEW } from "@modules/account/templates/login-template"
 import ErrorMessage from "@modules/checkout/components/error-message"
@@ -10,9 +13,10 @@ import { useActionState } from "react"
 type Props = {
   setCurrentView: (view: LOGIN_VIEW) => void
   redirectTo?: string
+  wishlistItem?: PendingWishlistItem
 }
 
-const Login = ({ setCurrentView, redirectTo }: Props) => {
+const Login = ({ setCurrentView, redirectTo, wishlistItem }: Props) => {
   const [message, formAction] = useActionState(login, null)
 
   return (
@@ -29,9 +33,7 @@ const Login = ({ setCurrentView, redirectTo }: Props) => {
         action={formAction}
         onSubmit={clearSavedProducts}
       >
-        {redirectTo && (
-          <input type="hidden" name="redirect_to" value={redirectTo} />
-        )}
+        <LoginRedirectFields redirectTo={redirectTo} wishlistItem={wishlistItem} />
         <div className="flex flex-col w-full gap-y-2">
           <Input
             label="Email"

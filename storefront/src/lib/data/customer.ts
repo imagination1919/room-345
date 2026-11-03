@@ -14,6 +14,7 @@ import {
   removeCartId,
   setAuthToken,
 } from "./cookies"
+import { addWishlistItem, createWishlist, listWishlists } from "./wishlists"
 
 export const retrieveCustomer =
   async (): Promise<HttpTypes.StoreCustomer | null> => {
@@ -69,6 +70,34 @@ const getSafeRedirect = (value: FormDataEntryValue | null): string | null => {
   return /^\/(?![/\\])[^\s\\]*$/.test(value) ? value : null
 }
 
+// Saves the product a logged-out visitor tapped the heart on, into their first
+// wishlist (or a new default one). Never blocks sign-in if the save fails.
+const savePendingWishlistItem = async (formData: FormData) => {
+  const productId = formData.get("wishlist_product_id")
+  const variantId = formData.get("wishlist_variant_id")
+
+  if (typeof productId !== "string" || !/^prod_\w+$/.test(productId)) {
+    return
+  }
+
+  try {
+    const wishlists = await listWishlists()
+    const wishlist =
+      wishlists[0] ?? (await createWishlist({ name: "Wishlist" }))
+
+    await addWishlistItem({
+      wishlistId: wishlist.id,
+      productId,
+      variantId:
+        typeof variantId === "string" && /^variant_\w+$/.test(variantId)
+          ? variantId
+          : undefined,
+    })
+  } catch {
+    // already saved, or the backend is unavailable
+  }
+}
+
 export async function signup(_currentState: unknown, formData: FormData) {
   const password = formData.get("password") as string
   const customerForm = {
@@ -115,6 +144,8 @@ export async function signup(_currentState: unknown, formData: FormData) {
     return error.toString()
   }
 
+  await savePendingWishlistItem(formData)
+
   if (redirectTo) {
     redirect(redirectTo)
   }
@@ -144,6 +175,8 @@ export async function login(_currentState: unknown, formData: FormData) {
   } catch (error: any) {
     return error.toString()
   }
+
+  await savePendingWishlistItem(formData)
 
   if (redirectTo) {
     redirect(redirectTo)

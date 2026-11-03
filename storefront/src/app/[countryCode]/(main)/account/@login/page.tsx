@@ -10,9 +10,23 @@ export const metadata: Metadata = {
 export default async function Login({
   searchParams,
 }: {
-  searchParams: Promise<{ redirect_to?: string }>
+  searchParams: Promise<{
+    redirect_to?: string
+    wishlist_product_id?: string
+    wishlist_variant_id?: string
+  }>
 }) {
-  const { redirect_to } = await searchParams
+  const { redirect_to, wishlist_product_id, wishlist_variant_id } =
+    await searchParams
 
-  return <LoginTemplate redirectTo={redirect_to} />
+  return (
+    <LoginTemplate
+      redirectTo={redirect_to}
+      wishlistItem={
+        wishlist_product_id
+          ? { productId: wishlist_product_id, variantId: wishlist_variant_id }
+          : undefined
+      }
+    />
+  )
 }
