@@ -13,7 +13,7 @@ export async function GET(
 
   const { data: wishlists } = await query.graph({
     entity: "wishlist",
-    fields: ["id", "name", "share_token", "created_at", "updated_at", "items.id"],
+    fields: ["id", "name", "share_token", "created_at", "updated_at", "items.id", "items.product_id", "items.product_variant_id"],
     filters: { customer_id: req.auth_context.actor_id },
   })
 

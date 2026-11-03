@@ -1,15 +1,22 @@
 import { login } from "@lib/data/customer"
+import LoginRedirectFields, {
+  PendingWishlistItem,
+} from "@modules/account/components/login-redirect-fields"
+import { clearSavedProducts } from "@lib/hooks/use-saved-products"
 import { LOGIN_VIEW } from "@modules/account/templates/login-template"
 import ErrorMessage from "@modules/checkout/components/error-message"
 import { SubmitButton } from "@modules/checkout/components/submit-button"
 import Input from "@modules/common/components/input"
+import LocalizedClientLink from "@modules/common/components/localized-client-link"
 import { useActionState } from "react"
 
 type Props = {
   setCurrentView: (view: LOGIN_VIEW) => void
+  redirectTo?: string
+  wishlistItem?: PendingWishlistItem
 }
 
-const Login = ({ setCurrentView }: Props) => {
+const Login = ({ setCurrentView, redirectTo, wishlistItem }: Props) => {
   const [message, formAction] = useActionState(login, null)
 
   return (
@@ -21,7 +28,12 @@ const Login = ({ setCurrentView }: Props) => {
       <p className="text-center text-base-regular text-ui-fg-base mb-8">
         Sign in to access an enhanced shopping experience.
       </p>
-      <form className="w-full" action={formAction}>
+      <form
+        className="w-full"
+        action={formAction}
+        onSubmit={clearSavedProducts}
+      >
+        <LoginRedirectFields redirectTo={redirectTo} wishlistItem={wishlistItem} />
         <div className="flex flex-col w-full gap-y-2">
           <Input
             label="Email"
@@ -40,6 +52,15 @@ const Login = ({ setCurrentView }: Props) => {
             required
             data-testid="password-input"
           />
+        </div>
+        <div className="mt-2 text-right text-small-regular">
+          <LocalizedClientLink
+            href="/forgot-password"
+            className="underline text-ui-fg-subtle"
+            data-testid="forgot-password-link"
+          >
+            Forgot your password?
+          </LocalizedClientLink>
         </div>
         <ErrorMessage error={message} data-testid="login-error-message" />
         <SubmitButton data-testid="sign-in-button" className="w-full mt-6">

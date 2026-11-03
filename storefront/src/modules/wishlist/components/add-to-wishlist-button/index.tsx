@@ -2,10 +2,11 @@
 
 import { Heart } from "@medusajs/icons"
 import { clx, toast } from "@medusajs/ui"
-import { useParams, useRouter } from "next/navigation"
+import { useParams, usePathname, useRouter } from "next/navigation"
 import type { MouseEvent } from "react"
 
 import { retrieveCustomer } from "@lib/data/customer"
+import { useIsProductSaved } from "@lib/hooks/use-saved-products"
 import useToggleState from "@lib/hooks/use-toggle-state"
 import AddToWishlistModal from "../add-to-wishlist-modal"
 
@@ -18,7 +19,9 @@ type Props = {
 const AddToWishlistButton = ({ productId, variantId, className }: Props) => {
   const { countryCode } = useParams() as { countryCode: string }
   const router = useRouter()
+  const pathname = usePathname()
   const { state, open, close } = useToggleState(false)
+  const isSaved = useIsProductSaved(productId)
 
   const handleClick = async (event: MouseEvent<HTMLButtonElement>) => {
     event.preventDefault()
@@ -28,7 +31,16 @@ const AddToWishlistButton = ({ productId, variantId, className }: Props) => {
 
     if (!customer) {
       toast.info("Log in to save items to a wishlist")
-      router.push(`/${countryCode}/account`)
+      const params = new URLSearchParams({
+        redirect_to: `${pathname}${window.location.search}`,
+        wishlist_product_id: productId,
+      })
+
+      if (variantId) {
+        params.set("wishlist_variant_id", variantId)
+      }
+
+      router.push(`/${countryCode}/account?${params.toString()}`)
       return
     }
 
@@ -44,10 +56,14 @@ const AddToWishlistButton = ({ productId, variantId, className }: Props) => {
           "flex items-center justify-center rounded-full bg-ui-bg-base p-2 shadow-elevation-card-rest hover:bg-ui-bg-base-hover transition-colors",
           className
         )}
-        aria-label="Add to wishlist"
+        aria-label={isSaved ? "Saved to wishlist" : "Add to wishlist"}
         data-testid="add-to-wishlist-button"
+        data-saved={isSaved}
       >
-        <Heart />
+        <Heart
+          color={isSaved ? "#e11d48" : "currentColor"}
+          fill={isSaved ? "#e11d48" : "none"}
+        />
       </button>
       <AddToWishlistModal
         isOpen={state}

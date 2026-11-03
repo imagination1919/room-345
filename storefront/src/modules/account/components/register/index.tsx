@@ -7,12 +7,18 @@ import ErrorMessage from "@modules/checkout/components/error-message"
 import { SubmitButton } from "@modules/checkout/components/submit-button"
 import LocalizedClientLink from "@modules/common/components/localized-client-link"
 import { signup } from "@lib/data/customer"
+import LoginRedirectFields, {
+  PendingWishlistItem,
+} from "@modules/account/components/login-redirect-fields"
+import { clearSavedProducts } from "@lib/hooks/use-saved-products"
 
 type Props = {
   setCurrentView: (view: LOGIN_VIEW) => void
+  redirectTo?: string
+  wishlistItem?: PendingWishlistItem
 }
 
-const Register = ({ setCurrentView }: Props) => {
+const Register = ({ setCurrentView, redirectTo, wishlistItem }: Props) => {
   const [message, formAction] = useActionState(signup, null)
 
   return (
@@ -20,14 +26,17 @@ const Register = ({ setCurrentView }: Props) => {
       className="max-w-sm flex flex-col items-center"
       data-testid="register-page"
     >
-      <h1 className="text-large-semi uppercase mb-6">
-        Become a Room 345 Member
-      </h1>
+      <h1 className="text-large-semi mb-6">Join the Harlie&apos;s Pet Supply pack</h1>
       <p className="text-center text-base-regular text-ui-fg-base mb-4">
-        Create your Room 345 Member profile, and get access to an enhanced
-        shopping experience.
+        Create your Harlie&apos;s Pet Supply account for faster checkout, order
+        tracking and the good stuff first.
       </p>
-      <form className="w-full flex flex-col" action={formAction}>
+      <form
+        className="w-full flex flex-col"
+        action={formAction}
+        onSubmit={clearSavedProducts}
+      >
+        <LoginRedirectFields redirectTo={redirectTo} wishlistItem={wishlistItem} />
         <div className="flex flex-col w-full gap-y-2">
           <Input
             label="First name"
@@ -69,7 +78,7 @@ const Register = ({ setCurrentView }: Props) => {
         </div>
         <ErrorMessage error={message} data-testid="register-error" />
         <span className="text-center text-ui-fg-base text-small-regular mt-6">
-          By creating an account, you agree to Room 345&apos;s{" "}
+          By creating an account, you agree to Harlie&apos;s Pet Supply&apos;s{" "}
           <LocalizedClientLink
             href="/content/privacy-policy"
             className="underline"
